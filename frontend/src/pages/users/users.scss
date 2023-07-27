@@ -1,0 +1,27 @@
+.users {
+    display: flex;
+    width: 100%;
+
+    .listContainer {
+        padding: 0px;
+
+        .search {
+            display: flex;
+            align-items: center;
+            width: 20vw;
+            border: 0.5px solid rgb(211, 202, 202);
+            padding:2px;
+
+            input {
+                border: none;
+                width: 20vw;
+                outline: none;
+                background: transparent;
+
+                &::placeholder {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
