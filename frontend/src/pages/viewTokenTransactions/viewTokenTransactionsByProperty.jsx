@@ -1,14 +1,9 @@
-
-import React from "react"
-import Navbar from "../../components/Navbar/Navbar"
-import Sidebar from "../../components/Sidebar/Sidebar"
+import { useEffect, useState } from "react"
+import { useParams } from 'react-router-dom';
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-
-import Datatable from "../../components/datatable/Datatable"
-
-function Profile() {
+function ViewTokenTransactionsByProperty() {
+    const [transactionsdata, setData] = useState(null);
+    const [Pendingtransactionsdata, setPendingData] = useState(null);
     const tableStyle = {
         width: "100%",
         borderCollapse: "collapse",
@@ -31,99 +26,61 @@ function Profile() {
     const trHoverStyle = {
         backgroundColor: "#f5f5f5",
     };
-    const buttonstyle = {
-        backgroundColor: "grey",
-
-    };
-    //get query params
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const userId = queryParams.get("user_id");
-    // <div className='users'>
-    //   <Sidebar/>
-
-
-    //   <div className="listContainer">
-
-    //   <Navbar/>
-    //   <Datatable/>
-    //   </div>
-    // </div>
-    const [userdata, setUsersData] = useState(null);
-    const [transactionsdata, setData] = useState(null);
-    const [Pendingtransactionsdata, setPendingData] = useState(null);
-
-
+const buttonstyle = {
+    backgroundColor: "grey",
+    
+  };
+//   const location = useLocation();
+//   const queryParams = new URLSearchParams(location.search);
+//   const propertyId = queryParams.get("property_id");
+//get url params
+let params = useParams();
 
     useEffect(() => {
-        const fetchUsers = async () => {
-            const res = await axios.get("/api/admin/users/profile", {
-                params: { user_id: userId },
-            });
+        const fetchTokenTransactions = async() => {
+            const res = await axios.get("/api/admin/view_token_transactions/"+params.property_id);
 
-            try {
-                setUsersData(res.data.user)
+            try{
                 setData(res.data.transactionsData)
                 setPendingData(res.data.PendingTransactionsData)
-                // console.log(res)
+            // console.log(res)
             }
-            catch (error) {
+            catch(error){
                 console.log(error);
             }
         }
-        fetchUsers();
+        fetchTokenTransactions();
 
-    }, [])
+        },[])
+        // const handleClick = (event) => {
+        //     const propertyId = event.target.id;
+        //     window.location.href = "/view_token_transactions/"+propertyId;
+        //   };
+    return(
+        // <div>
+        // {/* // { data && data.length>0 ? ( */}
+        // //     <div>
+        // //     {data.map((item) => (
+        // //             <div key={item.property_id}>
+        // //           <button id = {item.property_id} style={buttonstyle} onClick={handleClick}>{item.name}</button>
+        // //           </div>
+        // //       ))}
+        // //       </div>
+        // // ) : (
+        // //     <p>No Properties Found</p>
+        // // )
 
-
-    return (
+        // // }
+        // </div>
         <div>
-            <p>User Details</p>
-
-            {userdata && userdata.length>0 ? (
-                <div>
-                <table style={tableStyle}>
-                    <thead>
-                        <tr style={trHoverStyle}>
-                            <th style={thStyle}>ID</th>
-                            <th style={thStyle}>Name</th>
-                            <th style={thStyle}> Email</th>
-                            <th style={thStyle}>Contact</th>
-                            <th style={thStyle}>CNIC</th>
-                            <th style={thStyle}>Wallet Address</th>
-
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        {userdata.map((item) => (
-                            <tr key={item.user_id} style={trHoverStyle}>
-                                <td style={tdStyle}>{item.user_id}</td>
-                                <td style={tdStyle}>{item.fname} {item.lname}</td>
-                                <td style={tdStyle}>{item.email}</td>
-                                <td style={tdStyle}>{item.contact}</td>
-                                <td style={tdStyle}>{item.CNIC}</td>
-                                <td style={tdStyle}>{item.wallet_address}</td>
-
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                </div>
-
-                ) : (
-                <p>No user data found</p>
-
-            )}
-            <p>Completed Transactions</p>
+             <p>Completed Transactions</p>
             {transactionsdata && transactionsdata.length ? (
 
-                <div>
                 <table style={tableStyle}>
                     <thead>
                         <tr style={trHoverStyle}>
+                            <th style={thStyle}>Holder ID</th>
+                            <th style={thStyle}>Holder Name</th>
                             <th style={thStyle}>Token Transaction ID</th>
                             <th style={thStyle}>Property Name</th>
                             <th style={thStyle}>Property ID</th>
@@ -139,6 +96,8 @@ function Profile() {
                     <tbody>
                         {transactionsdata.map((item) => (
                             <tr key={item.token_transaction_id} style={trHoverStyle}>
+                                <td style={tdStyle}>{item.user_id}</td>
+                                <td style={tdStyle}>{item.fname} {item.lname}</td>
                                 <td style={tdStyle}>{item.token_transaction_id}</td>
                                 <td style={tdStyle}>{item.name}</td>
                                 <td style={tdStyle}>{item.property_id}</td>
@@ -152,7 +111,7 @@ function Profile() {
                         ))}
                     </tbody>
                 </table>
-                </div>
+                
                 
             ) : (
                 <p>No Token transactions available</p>
@@ -165,8 +124,8 @@ function Profile() {
                     <thead>
                         <tr style={trHoverStyle}>
                             <th style={thStyle}>Request ID</th>
-                            <th style={thStyle}>Property Name</th>
-                            <th style={thStyle}>Property ID</th>
+                            <th style={thStyle}>Pledger ID</th>
+                            <th style={thStyle}>Pledger Name</th>
                             <th style={thStyle}> Payment Status</th>
                             <th style={thStyle}>Token Name</th>
                             <th style={thStyle}>Date Of Request</th>
@@ -185,9 +144,9 @@ function Profile() {
                     <tbody>
                         {Pendingtransactionsdata.map((item) => (
                             <tr key={item.req_id} style={trHoverStyle}>
+                                <td style={tdStyle}>{item.Pledger_ID}</td>
+                                <td style={tdStyle}>{item.Pledger_Name}</td>
                                 <td style={tdStyle}>{item.req_id}</td>
-                                <td style={tdStyle}>{item.Property_Name}</td>
-                                <td style={tdStyle}>{item.property_id}</td>
                                 <td style={tdStyle}>{item.payment_status}</td>
                                 <td style={tdStyle}>{item.token_name}</td>
                                 <td style={tdStyle}>{item.date_of_request}</td>
@@ -206,8 +165,10 @@ function Profile() {
             ) : (
                 <p>No Pending transactions available</p>
             )}
+
         </div>
-    );
+    )
 }
 
-export default Profile;
+
+export default ViewTokenTransactionsByProperty;

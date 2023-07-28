@@ -60,7 +60,7 @@ function Sidebar() {
                     </li>
                     {isviewTransactionsVisible && (
                         <ul className='nested-list'>
-                            <Link to='/user_token_transactions' style={{ textDecoration: "none" }}>
+                            <Link to='/view_token_transactions' style={{ textDecoration: "none" }}>
                                 <li>
                                     <StoreIcon className='icon' />
                                     <span>Token Transactions </span>
