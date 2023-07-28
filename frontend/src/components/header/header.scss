@@ -1,0 +1,39 @@
+$text-color: #2c45a8;
+// $text-color:#555;
+
+.header{
+    // margin: 20px 30px;
+    color: $text-color;
+
+    .title{
+        font-size: 1.85rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        // padding: 7px 20px;
+        // background-color: $text-color;
+        // color: #fff;
+        // border-radius: 25px;
+        // width: fit-content;
+    }
+
+    .caption{
+        font-weight: 500;
+        font-size: 1.05rem;
+        margin-top: 3px;
+    }
+
+    .header-icon{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 50%;
+        background-color: $text-color;
+        color: #fff;
+        border-radius: 50%;
+        width: fit-content;
+    }
+
+}
+

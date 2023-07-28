@@ -1,0 +1,83 @@
+@use '../../utilities/variables';
+
+.sign-up-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+
+    .logo-img{
+        position: absolute;
+        top:0px;
+        left:50%;
+        transform: translate(-50%, -50%);
+        background-color: variables.$text-color;
+        padding: 7px 10px;
+        border-radius: 50%;
+    }
+
+    .sign-up-form{
+        background-color: #fff;
+        width: clamp(300px,50%,500px);
+        padding: 40px 15px 20px 15px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgba(192, 192, 192, 0.315);
+        position: relative;
+
+        h2{
+            font-size: 1.8rem;
+            text-align: center;
+            color: variables.$text-color;
+        }
+        
+        h4.new-link{
+            text-align: center;
+            color: variables.$text-color;
+            margin: 15px auto;
+        }
+        
+        h5.copyright-form{
+            text-align: center;
+            color: #a0a0a0;
+        }
+        
+        .sign-up-fields{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+        }
+        
+        .input-box{
+            margin: 30px auto;
+            width: 80%;
+            justify-self: center;
+        }
+        
+        
+        .textfield{
+            width: 100%;
+            /* padding: 10px 7px; */
+        }
+        
+        .form-btn{
+            display: flex;
+            justify-content: center;
+            width: clamp(300px,50%,600px);
+            margin: auto;
+        }
+        
+        .form-btn button{
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 10px 7px;
+            border: none;
+            background-color: variables.$text-color;
+            color: whitesmoke;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+    }
+
+}
+

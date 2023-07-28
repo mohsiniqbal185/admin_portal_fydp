@@ -1,0 +1,186 @@
+$cardHeight:400px;
+$imageContainerHeight:$cardHeight/2;
+$textContainerHeight:$cardHeight/2 - 7px;
+// $bg: #3457D5;
+// $bg-hover: #2c45a8;
+// $bg-hover: #0c39ec;
+$bg-hover: #092592;
+// $bg-hover: #1f327e;
+$bg: #2c45a8;
+
+
+.card{
+    width: 300px;
+    height: $cardHeight;
+    border: 1px solid #dfdfdf;
+    border-radius: 7px;
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    
+    &:hover{
+        box-shadow: 0.5px 0.5px 15px #cfcfcf;
+        transform: translateY(-7px);
+        transition: 0.5s;
+    }
+
+    .dark-overlay{
+        transition: 0.5s;
+    }
+
+    &:hover .dark-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
+        transition: 0.5s;
+      }
+
+      .status-badge{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: $bg;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    &:hover .status-badge{
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+    &:hover img{
+        filter: blur(2px);
+        transition: 0.5s;
+    }
+
+    .image-container{
+        width: 100%;
+        height: $imageContainerHeight;
+        border-bottom: 3px solid $bg;
+        position: relative;
+
+        img{
+            width: 100%;
+            height:100%;
+            object-fit: cover;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            transition: 0.5s;
+        }
+        
+    }
+
+    .text-container{
+        display: flex;
+        flex-direction: column;
+        height: $textContainerHeight;
+        padding-top: 7px;
+        color: $bg;
+
+        .text{
+            margin: 5px 0;
+            padding: 2px 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 100%;
+
+            h3{
+                font-size: 1.3rem;
+            }
+
+            p{
+                flex-grow: 1;
+                // color: #777;
+                color: $bg;
+                font-weight: 500;
+            }
+
+
+            .address{
+                display: flex;
+                align-items: center;
+                gap: 7px;
+                font-weight: 700;
+                text-transform: capitalize;
+
+                .addr-icon{
+                    padding: 6px;
+                    background-color: #2c45a8;
+                    color: #fff;
+                    font-size: 1.2rem;
+                    border-radius: 50%;
+                }
+                
+            }
+
+            .properties{
+                margin: 5px 0;
+
+                div{
+                    background-color: $bg;
+                    color: #fff;
+                    padding: 3px 5px;
+                    width: fit-content;
+                    margin: 3px auto;
+                    font-weight: 600;
+                    border-radius: 5px;
+                    font-size: 0.9rem;
+                    border: 2px dashed $bg;
+                }
+            }
+        }
+
+
+        button{
+            background-color: $bg;
+            color: #fff;
+            padding: 8px 10px 12px 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.5s;
+
+            &:hover{
+                background-color: $bg-hover;
+                transition: 0.5s;
+            }
+
+            span{
+                transform: translateX(8px);
+                transition: 0.5s;
+            }
+
+            &:hover span{
+                transform: translateX(0);
+                transition: 0.5s;
+            }
+
+            .icon{
+                transition: 0.5s;
+                opacity: 0;
+            }
+
+            &:hover .icon{
+                transition: 0.5s;
+                opacity: 1;
+            }
+        }
+    }
+}

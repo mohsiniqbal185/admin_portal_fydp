@@ -1,11 +1,91 @@
+// .navbar{
+//     height: 48px;
+//     border-bottom: 2px solid hwb(0 79% 17%);
+//     display: flex;
+//     align-items: center;
+//     font-size: 14px;
+//     color: #555;
+//     width: 84vw;
+
+//     .wrapper{
+//         width: 100%;
+//         padding: 20px;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+
+//         .search{
+//             display: flex;
+//             align-items: center;
+//             border: 0.5px solid rgb(211, 202, 202);
+//             padding: 3px;
+
+//             input{
+//                 border: none;
+//                 outline: none;
+//                 background: transparent; 
+
+//                 &::placeholder{
+//                     font-size: 12px;
+//                 }
+//             }
+//         }
+
+//         .items{
+//             display: flex;
+//             align-items: center;
+//             margin-left: 70%;
+
+//             .item{
+//                 display: flex;
+//                 align-items: center;
+//                 margin-right: 20px;
+//                 position: relative;
+
+//                 .icon{
+//                     font-size: 20px;
+//                 }
+
+//                 .avatar{
+//                     height: 30px;
+//                     width: 30px;
+//                     border-radius: 50%;
+//                     object-fit: cover;
+//                 }
+
+//                 .counter{
+//                     width: 15px;
+//                     height: 15px;
+//                     border-radius: 50%;
+//                     background-color: rgb(238, 77, 77);
+//                     color: white;
+//                     display: flex;
+//                     align-items: center;
+//                     justify-content: center;
+//                     position: absolute;
+//                     top: -5px;
+//                     right: -5px;
+
+//                 }
+//             }
+            
+//         }
+//     }
+// }
+
+
 .navbar{
-    height: 48px;
-    border-bottom: 2px solid hwb(0 79% 17%);
+    height: 70px;
+    // border-bottom: 0.5px solid rgb(211, 202, 202);
+    box-shadow: 0.5px 0.5px 5px #c8c8c8;
     display: flex;
     align-items: center;
     font-size: 14px;
     color: #555;
-    width: 84vw;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #fff;
 
     .wrapper{
         width: 100%;
@@ -13,6 +93,30 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        .top{
+            // height: 60px;
+            // display: flex;
+            // align-items: center; //does it vertically
+            // justify-content: flex-start; //does it horizontally
+    
+            .logo{
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #2c45a8;
+                // padding: 7px 20px;
+                // background-color: #2c45a8;
+                // color: #fff;
+                // border-radius: 25px;
+                // width: fit-content;
+
+                .admin-tag{
+                    font-size: 0.9rem;
+                    margin-left: 5px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
 
         .search{
             display: flex;
@@ -34,12 +138,11 @@
         .items{
             display: flex;
             align-items: center;
-            margin-left: 70%;
 
             .item{
                 display: flex;
                 align-items: center;
-                margin-right: 20px;
+                // margin-right: 20px;
                 position: relative;
 
                 .icon{
@@ -68,7 +171,17 @@
 
                 }
             }
-            
+
+            .account-logo{
+                padding: 7px;
+                cursor: pointer;
+                border-radius: 50%;
+
+                &:hover{
+                    background-color: #e8e8e8;
+                }
+            }
+
         }
     }
 }

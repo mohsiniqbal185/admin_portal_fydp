@@ -1,43 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './navbar.scss'
-import SearchIcon from '@mui/icons-material/Search';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import FullscreenExitOutlinedIcon from '@mui/icons-material/FullscreenExitOutlined';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import { Link } from 'react-router-dom';
+import { Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
+// import logo from "../../assets/logo8.png"
+// import useAuthStore from '../../context/AuthContext';
+// import axios from 'axios';
 
-function Navbar() {
+// important for letting axios have access to session data
+// axios.defaults.withCredentials = true;
+
+const emailDropStyles = {paddingBlock:'20px',cursor:'default',background:'#f5f5f5',marginBottom:'5px'}
+
+function Navbar({setLoggedIn}) {
+
+    // will set user to null in the store
+    // const logout = useAuthStore((state) => state.logout);
+    // const loggedUser = useAuthStore((state) => state.user);
+    // console.log(loggedUser);
+
+    const [anchorElUser, setAnchorElUser] = useState(null);
+
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+      };
+
+      const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+      };
+
+    const handleLogout = async ()=>{
+    //   handleCloseUserMenu()
+    //   deleteSession()
+    //   logout()
+    //   setLoggedIn(false)
+    }
+
+    // const deleteSession = async () => {
+    //   try{
+    //     const res = await axios.get("/delete-session")
+    //     return res
+    //   }catch(err){
+    //     console.log(err)
+    //   }
+    // }
+
+    // const settings = [{title:loggedUser?.email,icon:<PersonOutlineOutlinedIcon/>},{title:'Logout',click:handleLogout,icon:<LogoutOutlinedIcon/>}];
+
+    const settings = [{title:'Logout',click:handleLogout,icon:<LogoutOutlinedIcon/>}]
+    
   return (
     <div className='navbar'>
         <div className="wrapper">
-            
+            <div className="top">
+                <Link to="/" style={{textDecoration: "none"}}>
+                    <span className='logo'>Asaan Portal<sup className='admin-tag'>Admin</sup></span>
+                </Link>
+            </div>
             <div className="items">
-                <div className="item">
-                    <LanguageOutlinedIcon className='icon'/>
-                </div>
-                <div className="item">
-                    <DarkModeOutlinedIcon className='icon'/>
-                </div>
-                <div className="item">
-                    <FullscreenExitOutlinedIcon className='icon'/>                   
-                </div>
-                <div className="item">
-                    <NotificationsNoneOutlinedIcon className='icon'/>                    
-                    <div className="counter">1</div>
-                </div>
-                <div className="item">
-                    <ChatBubbleOutlineOutlinedIcon className='icon'/>
-                    <div className="counter">1</div>                   
-                </div>
-                <div className="item">
-                    <ListOutlinedIcon className='icon'/>                 
-                </div>
-                <div className="item">
-                    <img className='avatar' src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="" />              
-                </div>
-
+                <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} className='item account-logo'>
+                <AccountCircleOutlinedIcon style={{fontSize:'1.8rem',color:'#2c45a8'}}/>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} style={!setting?.click ? emailDropStyles:{}} onClick={setting?.click ? handleLogout:null}>
+                  <Typography display="flex" alignItems="center" textAlign="center" fontWeight={setting?.click ? '600':'500'}>{setting.icon}&nbsp;{setting.title}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
             </div>
         </div>
     </div>

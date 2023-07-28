@@ -1,73 +1,52 @@
 import React from "react"
 import './users.scss'
-import Navbar from "../../components/Navbar/Navbar"
-import Sidebar from "../../components/Sidebar/Sidebar"
 import axios from "axios";
 import { useEffect , useState} from "react";
-
 import Datatable from "../../components/datatable/Datatable"
+import Header from "../../components/header/Header";
+import { handleUserRows, userColumns } from "./TableSource";
+
+const headerOptions = {title:'Users'}
 
 function Users() {
-  const tableStyle = {
-    width: "100%",
-    borderCollapse: "collapse",
-    marginBottom: "20px",
-  };
-  const thStyle = {
-    padding: "12px 15px",
-    textAlign: "left",
-    borderBottom: "1px solid #ddd",
-    backgroundColor: "#f2f2f2",
-  };
-
-  const tdStyle = {
-    padding: "12px 15px",
-    textAlign: "left",
-    borderBottom: "1px solid #ddd",
-  };
-
-  const trHoverStyle = {
-    backgroundColor: "#f5f5f5",
-  };
-  const buttonstyle = {
-    backgroundColor: "grey",
-    
-  };
-  const handleClick = (event) => {
-    const buttonId = event.target.id;
-    window.location.href = "/users/profile?user_id="+buttonId;
-  };
-    // <div className='users'>
-    //   <Sidebar/>
-      
-      
-    //   <div className="listContainer">
-        
-    //   <Navbar/>
-    //   <Datatable/>
-    //   </div>
-    // </div>
     const [data, setData] = useState(null);
+    const [userRows,setUserRows] = useState([])
 
     useEffect(() => {
         const fetchUsers = async() => {
             const res = await axios.get("/api/admin/users")
             try{
             setData(res.data)
-            // console.log(res)
             }
             catch(error){
                 console.log(error);
             }
         }
-        fetchUsers();
-
+        if(!data){
+          fetchUsers();
+        }
         },[])
 
+    useEffect(()=>{
+      if(data){
+        setUserRows(handleUserRows(data))
+      }
+    },[data])
   
   return (
   <div>
-    {data ? (
+    <Header title={headerOptions.title}/>
+    <Datatable userRows={userRows} userColumns={userColumns}/>
+  </div>
+);
+}
+
+export default Users;
+
+
+
+
+{/* {data ? (
       <table style={tableStyle}>
         <thead>
         <tr style = {trHoverStyle}>
@@ -90,9 +69,30 @@ function Users() {
       </table>
     ) : (
       <p>Loading...</p>
-    )}
-  </div>
-);
-}
+    )} */}
 
-export default Users;
+// const tableStyle = {
+//   width: "100%",
+//   borderCollapse: "collapse",
+//   marginBottom: "20px",
+// };
+// const thStyle = {
+//   padding: "12px 15px",
+//   textAlign: "left",
+//   borderBottom: "1px solid #ddd",
+//   backgroundColor: "#f2f2f2",
+// };
+
+// const tdStyle = {
+//   padding: "12px 15px",
+//   textAlign: "left",
+//   borderBottom: "1px solid #ddd",
+// };
+
+// const trHoverStyle = {
+//   backgroundColor: "#f5f5f5",
+// };
+// const buttonstyle = {
+//   backgroundColor: "grey",
+  
+// };

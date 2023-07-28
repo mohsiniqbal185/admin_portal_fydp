@@ -1,0 +1,20 @@
+@use '../../utilities/variables';
+
+.settings-container{
+    margin: 20px 0;
+    border: 1.5px solid #cfcfcf;
+    border-radius: 7px;
+    padding: 20px 30px;
+    background-color: #fff;
+
+    h3{
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: variables.$text-color;
+    }
+
+    small{
+        color: variables.$text-color;
+        font-weight: 500;
+    }
+}

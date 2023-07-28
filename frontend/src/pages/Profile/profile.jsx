@@ -1,14 +1,66 @@
-
 import React from "react"
-import Navbar from "../../components/Navbar/Navbar"
-import Sidebar from "../../components/Sidebar/Sidebar"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import Datatable from "../../components/datatable/Datatable"
+import { Box, Tab, Tabs, Typography } from "@mui/material"
+import Header from "../../components/header/Header"
+import './profile.scss'
+import PropTypes from 'prop-types';
+import Container from "../../components/container/Container"
+import PersonalDetails from "../../components/settings/personalDetails/PersonalDetails"
+import BankDetails from "../../components/settings/bankDetails/BankDetails"
+import WalletDetails from "../../components/settings/walletDetails/WalletDetails"
+
+const tabHeadings = [{title:'Personal Details',caption:'Please keep your personal information up-to-date at all times. We do not share your information with any third party.',component:<PersonalDetails/>},
+{title:'Bank Details',caption:'Your personal information is completely secure and we don’t share it with anyone.',component:<BankDetails/>},
+{title:'Wallet Details',caption:'You can share your wallet address with others using the code below.',component:<WalletDetails/>},
+{title:'Token Transactions',caption:'Token Transactions.',component:<WalletDetails/>},
+{title:'Rental Transactions',caption:'Rental Transactions.',component:<WalletDetails/>}]
+
+const headerOptions = {title:'User Profile',caption:'Account Overview'}
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ py: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
 
 function Profile() {
+    const [value, setValue] = useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     const tableStyle = {
         width: "100%",
         borderCollapse: "collapse",
@@ -77,7 +129,7 @@ function Profile() {
 
     return (
         <div>
-            <p>User Details</p>
+            {/* <p>User Details</p>
 
             {userdata && userdata.length>0 ? (
                 <div>
@@ -204,7 +256,26 @@ function Profile() {
                 
             ) : (
                 <p>No Pending transactions available</p>
-            )}
+            )} */}
+        <div className="settingsContainer">
+            <Header title={headerOptions.title} caption={headerOptions.caption}/>
+            <div className="tab-container">
+                <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                    {tabHeadings?.map((tab,i)=>(
+                        <Tab key={i} label={tab.title} {...a11yProps(i)} />
+                    ))}
+                    </Tabs>
+                </Box>
+                {tabHeadings?.map((tab,i)=>(
+                    <CustomTabPanel value={value} index={i} sx={{padding:0}}>
+                    <Container tab={tab}/>
+                    </CustomTabPanel>
+                ))}
+            </Box>
+        </div>
+    </div>
         </div>
     );
 }

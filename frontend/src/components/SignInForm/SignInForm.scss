@@ -1,0 +1,84 @@
+@use '../../utilities/variables';
+
+.sign-in-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .logo-img{
+        position: absolute;
+        top:0px;
+        left:50%;
+        transform: translate(-50%, -50%);
+        background-color: variables.$text-color;
+        padding: 7px 10px;
+        border-radius: 50%;
+    }
+    
+    .sign-in-form{
+        background-color: #fff;
+        width: clamp(300px,50%,500px);
+        padding: 40px 15px 20px 15px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgba(192, 192, 192, 0.315);
+        position: relative;
+
+
+        h2{
+            font-size: 1.8rem;
+            text-align: center;
+            color: variables.$text-color;
+        }
+        
+        h4.new-link{
+            text-align: center;
+            color: variables.$text-color;
+            margin: 15px auto;
+        }
+        
+        h5.copyright-form{
+            text-align: center;
+            color: #a0a0a0;
+        }
+        
+        .input-box{
+            margin: 25px auto;
+            width: 75%;
+        }
+        
+        .input-box:first-of-type{
+            margin-top: 30px;
+        }
+        
+        .textfield{
+            width: 100%;
+            color: variables.$text-color;
+        }
+        
+        .form-btn{
+            display: flex;
+            justify-content: center;
+            width: 75%;
+            margin: auto;
+        }
+        
+        .form-btn button{
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 10px 7px;
+            border: none;
+            background-color: variables.$text-color;
+            color: whitesmoke;
+            border-radius: 7px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    }
+}
+
+
+

@@ -2,7 +2,9 @@
     display: flex;
 
     .homeContainer{
-        flex: 5;
+        width: calc(100vw - 280px);
+        padding: 20px 30px;
+        background-color: #f9f9f9;
 
         .widgets, .charts{
             display: flex;

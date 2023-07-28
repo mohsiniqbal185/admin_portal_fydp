@@ -1,54 +1,27 @@
+// $text-color: #777;
+$text-color:#2c45a8;
+$text-color-hover: rgb(118, 46, 177);
+
 .sidebar{
-    flex: 1;
-    border-right: 0.5px solid rgb(211, 202, 202);
-    height:65vw;
-    min-height: 10vh;
+    // flex: 1;
+    width: 260px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
     background-color: white;
-    width: 200px;
-    .top{
-        height: 20px;
-        display: flex;
-        align-items: center; //does it vertically
-        justify-content: center; //does it horizontally
+    padding-bottom: 10px;
+    // margin-top: 5px;
+    position: sticky;
+    top: 70px;
+    border-right: 0.5px solid #d2d2d2;
 
-        .logo{
-            font-size: 20px;
-            font-weight: bold;
-            color: rgb(118, 46, 177)
-        }
-    }
-    /* ListWithNestedLayer.css */
-
-/* Style for the nested list */
-
-  
     hr{
         height: 0;
         border: 0.5px solid rgb(211, 202, 202);
     }
 
     .centre{
-        padding-left: 10px;
-        ul.nested-list {
-            list-style-type: none;
-            margin: 10px 0; /* Add a gap between the parent and nested list */
-            padding-left: 20px; /* Indent the nested list */
-          }
-          
-          /* Style for nested list items */
-          ul.nested-list li {
-            margin: 5px 0; /* Add a gap between nested list items */
-          }
-          
-          /* Style for links in nested list items */
-          ul.nested-list li a {
-            color: #0066cc; /* Customize link color */
-            text-decoration: none; /* Remove underline */
-          }
-          
-          ul.nested-list li a:hover {
-            text-decoration: underline; /* Add underline on hover */
-          }
+        // border-right: 0.5px solid #d2d2d2;
+        padding-left: 0px;
         ul{
             list-style: none;
             padding: 0;
@@ -57,33 +30,95 @@
             .title{
                 font-size: 10px;
                 font-weight: bold;
-                color: #999;
+                color: $text-color;
                 margin-top: 15px;
                 margin-bottom: 5px;
+                margin-left:20px;
             }
 
-            li{
+            .link{
                 display: flex;
                 align-items: center;
-                padding: 5px;
+                padding: 10px 10px 10px 15px;
                 cursor: pointer;
+                color: $text-color;
+                border-left: 4px solid transparent;
 
                 &:hover{
-                    background-color: rgb(255, 203, 255);
-                    border-radius: 5px;
+                    background-color: #f2f2f2;
+                    border-radius: 0px;
+                    color: $text-color-hover;
+                    border-left: 4px solid $text-color-hover;
                 }
 
                 .icon{
-                    font-size: 18px;
-                    color: #7451f8
+                    font-size: 20px;
                 }
 
                 span{
-                    font-size: 18px;
+                    font-size: 15px;
                     font-weight: 600;
-                    color: #888;
                     margin-left: 10px;
                 }
+            }
+
+            .dropdown{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 10px 10px 15px;
+                cursor: pointer;
+                color: $text-color;
+                border-left: 4px solid transparent;
+
+                &:hover{
+                    background-color: #f2f2f2;
+                    border-radius: 0px;
+                    color: $text-color-hover;
+                    // border-left: 4px solid $text-color-hover;
+                }
+
+                .icon{
+                    font-size: 20px;
+                }
+
+                span{
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-left: 10px;
+                }
+            }
+
+            .dropdown-link{
+                display: flex;
+                align-items: center;
+                padding: 10px 10px 10px 25px;
+                cursor: pointer;
+                color: $text-color;
+                border-left: 4px solid transparent;
+
+                &:hover{
+                    background-color: #f2f2f2;
+                    border-radius: 0px;
+                    color: $text-color-hover;
+                    border-left: 4px solid $text-color-hover;
+                }
+
+                .icon{
+                    font-size: 20px;
+                }
+
+                span{
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-left: 10px;
+                }
+            }
+            .hover-styles{
+                background-color: #f2f2f2 !important;
+                border-radius: 0px !important;
+                color: $text-color-hover !important;
+                border-left: 4px solid $text-color-hover !important;
             }
         }
     }

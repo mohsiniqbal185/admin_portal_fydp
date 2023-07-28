@@ -1,136 +1,77 @@
 import './sidebar.scss'
-import React, { useState } from 'react';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import StoreIcon from '@mui/icons-material/Store';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import EqualizerIcon from '@mui/icons-material/Equalizer';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsSystemDaydreamIcon from '@mui/icons-material/SettingsSystemDaydream';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
+import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
+import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined';
+import {Link,useLocation} from "react-router-dom"
+import { useState } from 'react';
+import { list } from './Data';
 
-import { Link } from "react-router-dom"
+const l = []
+list.map((i)=>{
+    i.links.map((el)=>{
+        if(el.type.toLowerCase() === 'dropdown'){
+            l.push({text:el.text,status:el.open})
+        }
+    })
+})
+
 
 function Sidebar() {
-    const [isviewTransactionsVisible, setIsviewTransactionVisible] = useState(false);
-    const [ismanageTransactionsVisible, setmanageTransactionsVisible] = useState(false);
-    const [ishandlePropertiesVisible, sethandlePropertiesVisible] = useState(false);
+    const [open,setOpen] = useState(l)
+    const {pathname} = useLocation()
 
-    const handleviewTransactionsClick = () => {
-        setIsviewTransactionVisible(!isviewTransactionsVisible);
-    };
-    const handlemanageTransactionsClick = () => {
-        setmanageTransactionsVisible(!ismanageTransactionsVisible);
-    };
-    const handlepropertiesClick = () => {
-        sethandlePropertiesVisible(!ishandlePropertiesVisible);
-    };
-    return (
-        <div className='sidebar'>
-            <div className="top">
-                <Link to="/" style={{ textDecoration: "none" }}>
-                    <span className='logo'>ASAAN REIT </span>
-                </Link>
-            </div>
-            <hr />
-            <div className="centre">
-                <ul>
-                    <p className="title">MAIN</p>
-                    <li>
-                        <DashboardIcon className='icon' />
-                        <span>Dashboard</span>
-                    </li>
-                    <p className="title">CLIENTS</p>
-                    <Link to="/users" style={{ textDecoration: "none" }}>
-                        <li>
-                            <PeopleAltIcon className='icon' />
-                            <span>Users</span>
-                        </li>
-                    </Link>
+    function changeOpen(el) {
+        setOpen((prev)=>prev.map((i)=>i.text.toLowerCase() === el.toLowerCase() ? {...i,status:!i.status} :i))
+      }
 
 
-                    <li onClick={handleviewTransactionsClick}>
+    function sendStatus(el){
+        const statusArr = [...open]
+        const filterArr = statusArr.filter((i)=>i.text.toLowerCase() === el.toLowerCase())
+        return filterArr[0].status
+    }
 
-                        <StoreIcon className='icon' />
-                        <span>View Transactions </span>
-                    </li>
-                    {isviewTransactionsVisible && (
-                        <ul className='nested-list'>
-                            <Link to='/user_token_transactions' style={{ textDecoration: "none" }}>
-                                <li>
-                                    <StoreIcon className='icon' />
-                                    <span>Token Transactions </span>
+  return (
+    <div className='sidebar'>
+        <div className="centre">
+            <ul>
+                {list.map((item)=>(
+                    <div key={item.title}>
+                        <p className="title">{item.title}</p>
+                        {item.links.map((el)=>(
+                            el.type === 'Dropdown' ?
+                            <div>
+                                <li onClick={()=>changeOpen(el.text)} className='dropdown'>
+                                    <div style={{display:'flex',alignItems:'center'}}>
+                                        <div style={{display:'flex',alignItems:'center',background:'#2c45a8',color:'#fff',padding:'7px',borderRadius:'50%'}}>{el.icon}</div>
+                                        <span> {el.text}</span>
+                                    </div>
+                                    {sendStatus(el.text) ? <ArrowDropUpOutlinedIcon/>:<ArrowDropDownOutlinedIcon/>}
+                                </li>
+                                <div style={{display:sendStatus(el.text)?"block":"none"}}>
+                                    {el.dropdownLinks.map((i)=>(
+                                        <Link to={i.href} style={{textDecoration: "none"}}>
+                                        <li className={pathname === i.href ?'dropdown-link hover-styles':'dropdown-link'}>                
+                                        <div style={{display:'flex',alignItems:'center',background:'#2c45a8',color:'#fff',padding:'7px',borderRadius:'50%'}}>{i.icon}</div>
+                                            <span>{i.text}</span>
+                                        </li>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                            :
+                            <Link to={el.href} style={{textDecoration: "none"}}>
+                                <li className={pathname === el.href ? 'link hover-styles' : 'link'}>                
+                                <div style={{display:'flex',alignItems:'center',background:'#2c45a8',color:'#fff',padding:'7px',borderRadius:'50%'}}>{el.icon}</div>
+                                    <span>{el.text}</span>
                                 </li>
                             </Link>
-                            <Link to='/property_token_transactions' style={{ textDecoration: "none" }}>
-                                <li>
-                                    <StoreIcon className='icon' />
-                                    <span>Rental Transactions </span>
-                                </li>
-                            </Link>
-                        </ul>
-                    )}
-                    <p className="title">TOKENS SALE</p>
-
-                    <li>
-                        <EqualizerIcon className='icon' />
-                        <span>View Token Payments </span>
-                    </li>
-                    <li onClick={handlemanageTransactionsClick}>
-                        <CreditCardIcon className='icon' />
-                        <span>Manage Transactions</span>
-                    </li>
-                    {ismanageTransactionsVisible && (
-                        <ul className='nested-list'>
-                            <li>
-                                <StoreIcon className='icon' />
-                                <span>Token Transactions </span>
-                            </li>
-                            <li>
-                                <StoreIcon className='icon' />
-                                <span>Rental Transactions</span>
-                            </li>
-                        </ul>
-                    )}
-
-                    <li onClick={handlepropertiesClick}>
-                        <NotificationsIcon className='icon' />
-                        <span>Manage Properties</span>
-                    </li>
-                    {ishandlePropertiesVisible && (
-                        <ul className='nested-list'>
-                            <li>
-                                <StoreIcon className='icon' />
-                                <span>Edit Property Details </span>
-                            </li>
-                            <li>
-                                <StoreIcon className='icon' />
-                                <span>Create Property</span>
-                            </li>
-                        </ul>
-                    )}
-                    <li>
-                        <SettingsIcon className='icon' />
-                        <span>Token Market Sale</span>
-                    </li>
-                    <p className="title">SERVICE</p>
-                    <li>
-                        <AccountCircleIcon className='icon' />
-                        <span>Settings</span>
-                    </li>
-
-                </ul>
-            </div>
-            <div className="bottom">
-                <div className="colorOption"></div>
-                <div className="colorOption"></div>
-            </div>
+                        ))}
+                    </div>
+                ))}
+            </ul>
         </div>
-    )
+    </div>
+  )
 }
 
 export default Sidebar
