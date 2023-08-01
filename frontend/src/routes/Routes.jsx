@@ -21,6 +21,11 @@ import TokenPayments from "../pages/tokenPayments/TokenPayments";
 import EditProperty from "../pages/editProperty/EditProperty";
 import CreateProperty from "../pages/createProperty/CreateProperty";
 import TokenMarketSale from "../pages/tokenMarketSale/TokenMarketSale";
+import SingleViewTokenTransactions from "../pages/singleViewTokenTransactions/SingleViewTokenTransactions";
+import SingleViewRentalTransactions from "../pages/singleViewRentalTransactions/SingleViewRentalTransactions";
+import SingleManageTokenTransactions from "../pages/singleManageTokenTransactions/SingleManageTokenTransactions";
+import SingleManageRentalTransactions from "../pages/singleManageRentalTransactions/SingleMangeRentalTransactions";
+import SingleTokenPayments from "../pages/singleTokenPayments/SingleTokenPayments";
 
   const AppLayout = ()=>{
     return(
@@ -33,31 +38,40 @@ import TokenMarketSale from "../pages/tokenMarketSale/TokenMarketSale";
   export const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-      <Route
-          path="/login"
-          element={<SignInForm />}
-        />
-        <Route path="/sign-up" element={<SignUpForm />} />
-      <Route path="/*" element={<AppLayout/>}> 
+      <Route path="/login" element={<SignInForm />}/>
+      <Route path="/sign-up" element={<SignUpForm />} />
+      <Route path="/*" element={<AppLayout/>}>
         <Route index element={<Home/>}/>
         <Route path="view_transactions" element={<ViewTransaction />} />
         <Route path='users'>
           <Route index element={<Users/>}/>
           <Route path=':profile' element= {<Profile/>}/>
         </Route>
-        <Route path="view-transactions-token" element={<ViewTokenTransactions/>}/>
-        <Route path="view-transactions-rental" element={<ViewRentalTransactions/>}/>
-        <Route path="manage-transactions-token" element={<ManageTokenTransactions/>}/>
-        <Route path="manage-transactions-rental" element={<ManageRentalTransactions/>}/>
-        <Route path="view-payments-token" element={<TokenPayments/>}/>
+        <Route path="view-transactions-token">
+          <Route index element={<ViewTokenTransactions/>}/>
+          <Route path=":projectId" element={<SingleViewTokenTransactions/>}/>
+        </Route>
+        <Route path="view-transactions-rental">
+          <Route index element={<ViewRentalTransactions/>}/>
+          <Route path=":projectId" element={<SingleViewRentalTransactions/>}/>
+        </Route>
+        <Route path="manage-transactions-token">
+          <Route index element={<ManageTokenTransactions/>}/>
+          <Route path=":projectId" element={<SingleManageTokenTransactions/>}/>
+        </Route>
+        <Route path="manage-transactions-rental">
+          <Route index element={<ManageRentalTransactions/>}/>
+          <Route path=":projectId" element={<SingleManageRentalTransactions/>}/>
+        </Route>
+        <Route path="view-payments-token">
+          <Route index element={<TokenPayments/>}/>
+          <Route path=":projectId" element={<SingleTokenPayments/>}/>
+        </Route>
         <Route path="edit-property" element={<EditProperty/>}/>
         <Route path="create-property" element={<CreateProperty/>}/>
         <Route path="token-market-sale" element={<TokenMarketSale/>}/>
         <Route path="settings" element={<Settings/>}/>
       </Route>
-
       </>
-
-
     )
     );

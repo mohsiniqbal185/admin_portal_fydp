@@ -5,27 +5,37 @@ import { useEffect , useState} from "react";
 import Datatable from "../../components/datatable/Datatable"
 import Header from "../../components/header/Header";
 import { handleUserRows, userColumns } from "./TableSource";
+import { useQuery } from "@tanstack/react-query";
 
 const headerOptions = {title:'Users'}
 
 function Users() {
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [userRows,setUserRows] = useState([])
+    console.log(userRows)
 
-    useEffect(() => {
-        const fetchUsers = async() => {
-            const res = await axios.get("/api/admin/users")
-            try{
-            setData(res.data)
-            }
-            catch(error){
-                console.log(error);
-            }
-        }
-        if(!data){
-          fetchUsers();
-        }
-        },[])
+    // useEffect(() => {
+    //     const fetchUsers = async() => {
+    //         const res = await axios.get("/api/admin/users")
+    //         try{
+    //         setData(res.data)
+    //         }
+    //         catch(error){
+    //             console.log(error);
+    //         }
+    //     }
+    //     if(!data){
+    //       fetchUsers();
+    //     }
+    //     },[])
+
+    const { isLoading, error, data } = useQuery({
+      queryKey: ['users'],
+      queryFn: () =>
+        axios.get('/api/admin/users').then(
+            (res) => res.data
+        ),
+    })
 
     useEffect(()=>{
       if(data){

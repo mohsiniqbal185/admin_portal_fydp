@@ -1,6 +1,6 @@
 $cardHeight:400px;
-$imageContainerHeight:$cardHeight/2;
-$textContainerHeight:$cardHeight/2 - 7px;
+$imageContainerHeight:calc($cardHeight/2);
+$textContainerHeight:calc($cardHeight/2 - 7px);
 // $bg: #3457D5;
 // $bg-hover: #2c45a8;
 // $bg-hover: #0c39ec;
