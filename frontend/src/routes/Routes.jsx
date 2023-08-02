@@ -26,6 +26,9 @@ import SingleViewRentalTransactions from "../pages/singleViewRentalTransactions/
 import SingleManageTokenTransactions from "../pages/singleManageTokenTransactions/SingleManageTokenTransactions";
 import SingleManageRentalTransactions from "../pages/singleManageRentalTransactions/SingleMangeRentalTransactions";
 import SingleTokenPayments from "../pages/singleTokenPayments/SingleTokenPayments";
+import ViewTokenTransactionsDetail from "../pages/viewTokenTransactionsDetail/ViewTokenTransactionsDetail";
+import ManageTokenTransactionsDetail from "../pages/manageTokenTransactionsDetail/ManageTokenTransactionsDetail";
+import TokenPaymentsDetail from "../pages/tokenPaymentsDetail/TokenPaymentsDetail";
 
   const AppLayout = ()=>{
     return(
@@ -50,6 +53,7 @@ import SingleTokenPayments from "../pages/singleTokenPayments/SingleTokenPayment
         <Route path="view-transactions-token">
           <Route index element={<ViewTokenTransactions/>}/>
           <Route path=":projectId" element={<SingleViewTokenTransactions/>}/>
+          <Route path=":projectId/:viewId" element={<ViewTokenTransactionsDetail/>}/>
         </Route>
         <Route path="view-transactions-rental">
           <Route index element={<ViewRentalTransactions/>}/>
@@ -58,6 +62,7 @@ import SingleTokenPayments from "../pages/singleTokenPayments/SingleTokenPayment
         <Route path="manage-transactions-token">
           <Route index element={<ManageTokenTransactions/>}/>
           <Route path=":projectId" element={<SingleManageTokenTransactions/>}/>
+          <Route path=":projectId/manage/:manageId" element={<ManageTokenTransactionsDetail/>}/>
         </Route>
         <Route path="manage-transactions-rental">
           <Route index element={<ManageRentalTransactions/>}/>
@@ -66,6 +71,7 @@ import SingleTokenPayments from "../pages/singleTokenPayments/SingleTokenPayment
         <Route path="view-payments-token">
           <Route index element={<TokenPayments/>}/>
           <Route path=":projectId" element={<SingleTokenPayments/>}/>
+          <Route path=":projectId/:paymentId" element={<TokenPaymentsDetail/>}/>
         </Route>
         <Route path="edit-property" element={<EditProperty/>}/>
         <Route path="create-property" element={<CreateProperty/>}/>

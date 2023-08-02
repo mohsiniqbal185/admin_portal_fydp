@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 
 export const userColumns = [
-    { field: "id", headerName: "ID", width: 70 },
+    { 
+      field: "id", 
+      headerName: "ID", 
+      width: 70 
+    },
     {
       field: "user",
       headerName: "User",
-      width: 230,
+      width: 150,
       renderCell: (params) => {
         console.log(params)
         return (
@@ -19,14 +23,13 @@ export const userColumns = [
     {
       field: "email",
       headerName: "Email",
-      width: 230,
+      width: 150,
     },
     {
         field: "action", 
         headerName: "Action", 
-        width: 200, 
+        width: 150, 
         renderCell: (params)=> {
-            console.log('b',params)
             return (
                 <div className='cellAction'>
                     <Link to={`/users/profile?user_id=${params.row.id}`} style={{textDecoration: "none"}}>

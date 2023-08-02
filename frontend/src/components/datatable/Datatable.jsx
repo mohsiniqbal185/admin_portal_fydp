@@ -5,7 +5,7 @@ import { useState } from 'react';
 import ThumbDownAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined';
 
 
-function Datatable({userColumns,userRows,actionColumn,pending}) {
+function Datatable({userColumns,userRows,pending}) {
 
     const [inputValue,setInputValue] = useState('')
 
@@ -15,7 +15,7 @@ function Datatable({userColumns,userRows,actionColumn,pending}) {
 
   return (
     <div className='datatable'>
-        <div>
+        <div className='datatable-container'>
         <div className='searchbox'>
             <input type="text" placeholder='Search' value={inputValue} onChange={(e)=>setInputValue(e.target.value)}/>
         </div>

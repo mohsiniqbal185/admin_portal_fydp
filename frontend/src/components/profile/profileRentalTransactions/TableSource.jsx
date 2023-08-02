@@ -26,7 +26,6 @@ export const userColumns = [
         headerName: "Action", 
         width: 200, 
         renderCell: (params)=> {
-            console.log('b',params)
             return (
                 <div className='cellAction'>
                     <Link to={`/users/profile?user_id=${params.row.id}`} style={{textDecoration: "none"}}>

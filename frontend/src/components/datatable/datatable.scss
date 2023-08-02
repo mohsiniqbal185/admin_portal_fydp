@@ -4,9 +4,16 @@
     // height: 500px;
     // padding: 10px;
     width: 100%;
+    padding: 5px;
     display: flex;
     justify-content: center;
     margin: 30px auto 90px auto;
+
+    .datatable-container{
+        width: fit-content;
+        height: 100%;
+        overflow-x: auto;
+    }
 
     .searchbox{
         display: flex;

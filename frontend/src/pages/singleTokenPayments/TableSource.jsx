@@ -1,41 +1,45 @@
 import { Link } from "react-router-dom";
 
 export const userColumns = [
-    { field: "id", headerName: "ID", width: 70 },
-    {
-      field: "user",
-      headerName: "User",
-      width: 230,
-      renderCell: (params) => {
-        console.log(params)
-        return (
-          <div className="cellWithImg">
-            <img className="cellImg" src={params.row.img} alt="avatar" />
-            {params.row.username}
-          </div>
-        );
-      },
+    { 
+      field: "id", 
+      headerName: "Payment ID", 
+      width: 100 
     },
     {
-      field: "email",
-      headerName: "Email",
-      width: 230,
+      field: "payment_method",
+      headerName: "Payment Method",
+      width:150
+    },
+    {
+      field: "payment_from",
+      headerName: "Payment From",
+      width: 150
+    },
+    {
+        field: "datetime",
+        headerName: "DateTime",
+        width: 150
+    },
+    {
+        field: "transaction_id",
+        headerName: "Transaction ID",
+        width: 150
     },
     {
         field: "action", 
-        headerName: "Action", 
-        width: 200, 
+        headerName: "Payment Status",
+        width:150, 
         renderCell: (params)=> {
-            console.log('b',params)
             return (
                 <div className='cellAction'>
-                    <Link to={`/users/profile?user_id=${params.row.id}`} style={{textDecoration: "none"}}>
+                    <Link to={`/view-payments-token/${params.row.id}/${params.row.id}`} style={{textDecoration: "none"}}>
                         <div className='viewButton'>View</div>
                     </Link>
                 </div>
             )
-          }  
-        }
+        }  
+    },
   ];
 
 
@@ -43,10 +47,11 @@ export const userColumns = [
     const dummyArr = []
     data?.map((d)=>{
       const newVal = {
-        id:d.user_id,
-        username:d.User,
-        img:"https://images.unsplash.com/photo-1638486071992-536e48c8fa3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bG9vayUyMGJhY2t8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
-        email:d.email
+        id:d.property_id,
+        payment_method:'Hamza',
+        payment_from:2,
+        datetime:d.name,
+        transaction_id:d.property_id,
     }
       dummyArr.push(newVal)
     })

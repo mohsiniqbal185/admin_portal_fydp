@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 
 export const userColumns = [
-    { field: "id", headerName: "ID", width: 70 },
+    { 
+      field: "id", 
+      headerName: "ID", 
+      width: 70 
+    },
     {
       field: "user",
       headerName: "User",
@@ -24,9 +28,8 @@ export const userColumns = [
     {
         field: "action", 
         headerName: "Action", 
-        width: 200, 
+        width: 120, 
         renderCell: (params)=> {
-            console.log('b',params)
             return (
                 <div className='cellAction'>
                     <Link to={`/users/profile?user_id=${params.row.id}`} style={{textDecoration: "none"}}>

@@ -2,12 +2,12 @@ import React from 'react'
 import './container.scss'
 
 function Container({tab}) {
-    const {title,caption,component} = tab
+
   return (
     <div className='settings-container'>
-        <h3>{title}</h3>
-        <small>{caption}</small>
-        {component}
+        <h3>{tab?.title}</h3>
+        <small>{tab?.caption}</small>
+        {tab?.component}
     </div>
   )
 }
