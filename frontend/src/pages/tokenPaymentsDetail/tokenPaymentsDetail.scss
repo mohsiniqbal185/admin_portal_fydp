@@ -1,0 +1,10 @@
+@use '../../utilities/variables';
+
+.receipt-link{
+    color: variables.$text-color;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 30px;
+    text-decoration: underline;
+    cursor: pointer;
+}
