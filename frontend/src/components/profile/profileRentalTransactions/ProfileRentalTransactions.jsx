@@ -3,6 +3,7 @@ import './profileRentalTransactions.scss'
 import { handleUserRows, userColumns } from "./TableSource";
 import Datatable from '../../datatable/Datatable';
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 function ProfileRentalTransactions() {
   const [userRows,setUserRows] = useState([])

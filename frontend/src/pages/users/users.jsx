@@ -12,7 +12,6 @@ const headerOptions = {title:'Users'}
 function Users() {
     // const [data, setData] = useState(null);
     const [userRows,setUserRows] = useState([])
-    console.log(userRows)
 
     // useEffect(() => {
     //     const fetchUsers = async() => {

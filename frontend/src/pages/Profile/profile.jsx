@@ -75,6 +75,7 @@ function Profile() {
             const res = await axios.get("/api/admin/users/profile", {
                 params: { user_id: userId },
             });
+            console.log(res.data)
 
             try {
                 setUsersData(res.data.user)

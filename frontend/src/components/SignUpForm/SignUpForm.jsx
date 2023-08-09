@@ -30,8 +30,6 @@ const SignUpForm = () => {
         {label:'CNIC',name:'cnic',type:'number',value:values.cnic}
     ]
 
-    console.log(values)
-
     return ( 
         <div className="sign-up-form-container">
             <div className="sign-up-form">

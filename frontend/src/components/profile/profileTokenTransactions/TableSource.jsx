@@ -11,7 +11,6 @@ export const userColumns = [
       headerName: "User",
       width: 150,
       renderCell: (params) => {
-        console.log(params)
         return (
           <div className="cellWithImg">
             <img className="cellImg" src={params.row.img} alt="avatar" />
