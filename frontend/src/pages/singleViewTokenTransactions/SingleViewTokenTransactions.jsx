@@ -17,26 +17,33 @@ function SingleViewTokenTransactions() {
   const { isLoading, error, data } = useQuery({
     queryKey: ['propertyData'],
     queryFn: () =>
-      axios.get('/api/admin/view_token_transactions').then(
+      axios.get(`/api/admin/view_token_transactions/${projectId}`).then(
           (res) => res.data
       ),
   })
 
-  const property = data?.filter((p)=>p.property_id == projectId)
 
     useEffect(()=>{
       if(data){
-        setUserRowsCompleted(handleUserRowsCompleted(data))
-        setUserRowsPending(handleUserRowsPending(data))
+
+        setUserRowsCompleted(handleUserRowsCompleted(data.transactionsData))
+        setUserRowsPending(handleUserRowsPending(data.PendingTransactionsData))
       }
     },[data])
 
-
+      const [open, setOpen] = useState(false)
+      const handleClick = () => {
+        setOpen(true)
+        navigator.clipboard.writeText(window.location.toString())
+      }
   return (
     <div>
-      <Header title={property ? property[0]?.name :''} iconProp={<ApartmentOutlinedIcon/>} caption={'View Token Transactions'}/>
+      <Header title='View Completed Token Transactions' iconProp={<ApartmentOutlinedIcon/>}/>
       <Datatable userRows={userRowsCompleted} userColumns={userColumnsCompleted}/>
+      <Header title='View Pending Token Transactions' iconProp={<ApartmentOutlinedIcon/>}/>
+
       <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
+      {/* {/* <div>{userRowsCompleted}</div> */}
     </div>
   )
 }
