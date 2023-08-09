@@ -7,7 +7,7 @@ function InfoFields({details}) {
             {details?.map((item)=>(
                 <div>
                     <h4>{item.title}</h4>
-                    <p>Value</p>
+                    <p>{item.value}</p>
                 </div>
             ))}
         </div>

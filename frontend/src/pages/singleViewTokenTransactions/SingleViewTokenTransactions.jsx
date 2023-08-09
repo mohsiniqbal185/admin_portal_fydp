@@ -15,7 +15,7 @@ function SingleViewTokenTransactions() {
   const {projectId} = useParams()
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['propertyData'],
+    queryKey: ['propertyDataSingle'],
     queryFn: () =>
       axios.get(`/api/admin/view_token_transactions/${projectId}`).then(
           (res) => res.data

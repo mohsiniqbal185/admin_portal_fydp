@@ -17,8 +17,16 @@
 
     .searchbox{
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
         margin: 10px auto;
+
+        h4{
+            color:variables.$text-color;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
 
         input{
             padding: 10px 15px;

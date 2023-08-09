@@ -19,13 +19,15 @@ function ManageTokenTransactions() {
       ),
   })
 
+  console.log(data)
+
   return (
     <div>
         <Header title={headerOptions.title} caption={headerOptions.caption}/>
         <div className='product-card-group'>
             {data?.map((project,i)=>{
             return(
-                <ProductCard project={project} i={i} pathname={pathname}/>
+                <ProductCard key={project.property_id} project={project} i={i} pathname={pathname}/>
             )
             })}
         </div>

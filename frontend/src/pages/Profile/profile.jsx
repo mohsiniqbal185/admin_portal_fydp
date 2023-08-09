@@ -20,8 +20,6 @@ const tabHeadings = [{title:'Personal Details',caption:'Please keep your persona
 {title:'Token Transactions',caption:'Token Transactions.',component:<ProfileTokenTransactions/>},
 {title:'Rental Transactions',caption:'Rental Transactions.',component:<ProfileRentalTransactions/>}]
 
-const headerOptions = {title:'User Profile',caption:'Account Overview'}
-
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -66,16 +64,19 @@ function Profile() {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userId = queryParams.get("user_id");
-    const [userdata, setUsersData] = useState(null);
+    const [userdata, setUsersData] = useState([]);
     const [transactionsdata, setData] = useState(null);
     const [Pendingtransactionsdata, setPendingData] = useState(null);
+
+
+
+    const headerOptions = {title:`${userdata[0]?.fname} ${userdata[0]?.lname}'s Profile`,caption:'Account Overview'}
 
     useEffect(() => {
         const fetchUsers = async () => {
             const res = await axios.get("/api/admin/users/profile", {
                 params: { user_id: userId },
             });
-            console.log(res.data)
 
             try {
                 setUsersData(res.data.user)

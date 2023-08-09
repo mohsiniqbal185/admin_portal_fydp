@@ -19,7 +19,7 @@ function ProductCard({project,i,pathname}) {
     <div className='card'>
         <div className='image-container'>
             <img src={property} alt="Property-image" />
-            <div class="dark-overlay"></div>
+            <div className="dark-overlay"></div>
             <div className='status-badge'>Token&nbsp;Price(PKR):&nbsp;{token_price}</div>
         </div>
         <div className='text-container'>
