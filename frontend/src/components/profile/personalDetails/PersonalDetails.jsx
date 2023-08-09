@@ -20,7 +20,13 @@ function PersonalDetails() {
     ),
   })
 
-  const details = [{title:'First Name',value:data?.fname},{title:'Last Name',value:data?.lname},{title:'Email',value:data?.email},{title:'Contact Number',value:data?.contact},{title:'CNIC',value:data?.CNIC}]
+  const details = [
+    {title:'First Name',value:data?.fname},
+    {title:'Last Name',value:data?.lname},
+    {title:'Email',value:data?.email},
+    {title:'Contact Number',value:data?.contact},
+    {title:'CNIC',value:data?.CNIC}
+  ]
 
   return (
     <div>
