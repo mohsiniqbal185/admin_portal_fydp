@@ -11,7 +11,7 @@ function PersonalDetails() {
   const userId = queryParams.get("user_id");
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['profileData'],
+    queryKey: ['profileDataUser'],
     queryFn: () =>
       axios.get("/api/admin/users/profile", {
         params: { user_id: userId },
