@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+const handleCopy=(params)=>{
+    navigator.clipboard.writeText(params);
 
+}
 export const userColumnsCompleted = [
     { 
         field: "id", 
-        headerName: "Holder ID", 
+        headerName: "ID", 
         width: 100 
     },
     {
@@ -11,11 +14,7 @@ export const userColumnsCompleted = [
       headerName: "Holder Name",
       width:150
     },
-    {
-      field: "token_transaction_id",
-      headerName: "Token Transaction ID",
-      width:150
-    },
+
     {
         field: "property_name",
         headerName: "Property Name",
@@ -39,11 +38,20 @@ export const userColumnsCompleted = [
     {
         field: "transaction_hash",
         headerName: "Transaction Hash",
-        width:150
+        width:150,
+        renderCell: (params)=> {
+            return (
+                <div className='cellAction'>
+                        <div className='viewButton' onClick={handleCopy(params.row.transaction_hash)}>{params.row.transaction_hash}</div>
+                        
+                </div>
+            )
+        }
+        
     },
     {
-        field: "action", 
-        headerName: "Action",
+        field: "Payment details", 
+        headerName: "Payment details",
         width:150, 
         renderCell: (params)=> {
             return (
@@ -57,12 +65,12 @@ export const userColumnsCompleted = [
     },
     {
         field: "action", 
-        headerName: "Payment Details",  
+        headerName: "Etherscan Details",  
         width:150,
         renderCell: (params)=> {
             return (
                 <div className='cellAction'>
-                    <Link to={`/users/profile?user_id=${params.row.id}`} style={{textDecoration: "none"}}>
+                    <Link to={`https://etherscan.io/tx/${params.row.transaction_hash}`} style={{textDecoration: "none"}}>
                         <div className='viewButton'>View</div>
                     </Link>
                 </div>
@@ -76,14 +84,13 @@ export const userColumnsCompleted = [
     const dummyArr = []
     data?.map((d)=>{
       const newVal = {
-        id:d.property_id,
-        holder_name:'Hamza',
-        token_transaction_id:2,
+        id: d.token_transaction_id,
+        holder_name:d.fname + ' ' +d.lname,
         property_name:d.name,
         property_id:d.property_id,
-        sender_id:5,
-        number_of_tokens:10,
-        transaction_hash:0x456,
+        sender_id:d.sender_id,
+        number_of_tokens:d.no_of_tokens,
+        transaction_hash:d.transaction_hash,
     }
       dummyArr.push(newVal)
     })

@@ -10,10 +10,10 @@ import {Link} from 'react-router-dom'
 function ProductCard({project,i,pathname}) {
 
     const navigate = useNavigate()
-    const {property_id ,name,location, no_of_tokens, tokens_sold,property_type,value_in_pkr} = project
+    const {property_id ,name,location, no_of_tokens, tokens_sold,property_type,value_in_pkr,token_value} = project
     const status = no_of_tokens > tokens_sold ? 'Available' : 'Not Available'
     // const {value} = properties?.filter((p)=>p.title.toLowerCase()==='token price')[0]
-    const token_price = value_in_pkr/no_of_tokens;
+    const token_price = token_value;
 
   return (
     <div className='card'>
