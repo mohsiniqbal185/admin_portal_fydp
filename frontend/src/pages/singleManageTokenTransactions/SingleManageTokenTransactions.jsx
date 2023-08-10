@@ -15,12 +15,12 @@ function SingleManageTokenTransactions() {
   const { isLoading, error, data } = useQuery({
     queryKey: ['propertyData'],
     queryFn: () =>
-      axios.get('/api/admin/view_token_transactions').then(
+      axios.get(`/api/admin/manage_token_transactions/${projectId}`).then(
           (res) => res.data
       ),
   })
 
-  const property = data?.filter((p)=>p.property_id == projectId)
+  // const property = data?.filter((p)=>p.property_id == projectId)
 
     useEffect(()=>{
       if(data){
@@ -30,7 +30,7 @@ function SingleManageTokenTransactions() {
 
   return (
     <div>
-      <Header title={property ? property[0]?.name :''} iconProp={<ApartmentOutlinedIcon/>} caption={'Manage Token Transactions'}/>
+      <Header title='Manage Token Transactions' iconProp={<ApartmentOutlinedIcon/>}/>
       <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
     </div>
   )

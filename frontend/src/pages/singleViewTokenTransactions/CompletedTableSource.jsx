@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 const handleCopy=(params)=>{
     navigator.clipboard.writeText(params);
-
 }
 export const userColumnsCompleted = [
     { 
@@ -56,7 +55,7 @@ export const userColumnsCompleted = [
         renderCell: (params)=> {
             return (
                 <div className='cellAction'>
-                    <Link to={`/users/profile?user_id=${params.row.id}`} style={{textDecoration: "none"}}>
+                    <Link to={`manage-transactions-token/1${params.row.id}`} style={{textDecoration: "none"}}>
                         <div className='viewButton'>View</div>
                     </Link>
                 </div>

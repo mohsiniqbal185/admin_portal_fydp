@@ -7,32 +7,46 @@ import axios from 'axios';
 import Header from '../../components/header/Header';
 import { useParams } from 'react-router-dom';
 import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
+import { handleUserRowsPending,userColumnsPending } from './PendingpaymentSource'
 
 function SingleTokenPayments() {
     const [userRows,setUserRows] = useState([])
     const {projectId} = useParams()
+    const [userRowsPending,setUserRowsPending] = useState([])
+
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['propertyData'],
     queryFn: () =>
-      axios.get('/api/admin/view_token_transactions').then(
+      axios.get(`/api/admin/view_token_payments/${projectId}`).then(
           (res) => res.data
       ),
   })
+  // const { ispaymentLoading, paymenterror, paymentdata } = useQuery({
+  //   queryKey: ['paymentData'],
+  //   queryFn: () =>
+  //     axios.get(`/api/admin/view_token_payments/${projectId}`).then(
+  //         (res) => res.data
+  //     ),
+  // })
 
-  const property = data?.filter((p)=>p.property_id == projectId)
+  // const property = data?.filter((p)=>p.property_id == projectId)
 
     useEffect(()=>{
       if(data){
-        setUserRows(handleUserRows(data))
+        setUserRows(handleUserRows(data.PaymentDataForCompletedTransactions))
+        setUserRowsPending(handleUserRowsPending(data.PaymentDataForPledgedTransactions))
+
       }
     },[data])
 
   return (
     <div>
-        <Header title={property ? property[0]?.name :''} iconProp={<ApartmentOutlinedIcon/>} caption={'Token Payments'}/>
-        <Datatable userRows={userRows} userColumns={userColumns}/>
-        {/* <Datatable userRows={userRows} userColumns={userColumns}/> */}
+      <Header title='Completed Payments' iconProp={<ApartmentOutlinedIcon/>} caption={'Token Payments'}/> 
+      <Datatable userRows={userRows} userColumns={userColumns}/>
+      <Header title='Pending Payments' iconProp={<ApartmentOutlinedIcon/>} caption={'Token Payments'}/> 
+
+        <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
     </div>
   )
 }

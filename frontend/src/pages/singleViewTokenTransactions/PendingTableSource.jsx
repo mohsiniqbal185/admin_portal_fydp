@@ -17,6 +17,11 @@ export const userColumnsPending = [
         headerName: "Property Name",
         width:150
     },
+    {
+        field: "property_id",
+        headerName: "Property ID",
+        width:150
+    },
 
     {
         field: "token_name",
@@ -62,7 +67,7 @@ export const userColumnsPending = [
         renderCell: (params)=> {
             return (
                 <div className='cellAction'>
-                    <Link to={`/view-transactions-token/${params.row.id}/3`} style={{textDecoration: "none"}}>
+                    <Link to={`/manage-transactions-token/${params.row.property_id}/${params.row.id}`} style={{textDecoration: "none"}}>
                         <div className='viewButton'>Manage</div>
                     </Link>
                 </div>
@@ -79,6 +84,7 @@ export const userColumnsPending = [
         id:d.req_id,
         pledger_name:d.Pledger_Name,
         property_name:d.Property_Name,
+        property_id:d.property_id,
         token_name:d.token_name,
         number_of_tokens:d.no_of_tokens,
         number_of_tokens_remaining:d.RemainingTokens,

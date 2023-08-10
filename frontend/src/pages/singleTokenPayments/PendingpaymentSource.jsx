@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 
-export const userColumns = [
+export const userColumnsPending = [
     { 
       field: "id", 
       headerName: "Payment ID", 
@@ -35,7 +35,7 @@ export const userColumns = [
     {
       field: "payment_status",
       headerName: "Payment Status",
-      width: 150
+      width: 150,
   },
     {
         field: "action", 
@@ -47,7 +47,7 @@ export const userColumns = [
             return (
                 <div className='cellAction'>
                     <Link to={`/view-payments-token/${projectId}/${params.row.id}`} style={{textDecoration: "none"}}>
-                        <div className='viewButton'>View</div>
+                        <div className='viewButton'>Manage</div>
                     </Link>
                 </div>
             )
@@ -56,7 +56,7 @@ export const userColumns = [
   ];
 
 
-  export const handleUserRows = (data)=>{
+  export const handleUserRowsPending = (data)=>{
     const dummyArr = []
     data?.map((d)=>{
       const newVal = {
