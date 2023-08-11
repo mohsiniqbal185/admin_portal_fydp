@@ -1,0 +1,50 @@
+@use '../../utilities/variables';
+
+.contract-form{
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+
+    form{
+       
+        margin: auto;
+
+        .input-box{
+            margin: 25px auto;
+            width: 100%;
+        }
+        
+        .input-box:first-of-type{
+            margin-top: 30px;
+        }
+
+        .textfield{
+            width: 350px;
+            color: variables.$text-color;
+        }
+    
+        .form-btn{
+            display: flex;
+            justify-content: center;
+        }
+        
+        .form-btn button{
+            width: 350px;
+            font-size: 1.2rem;
+            padding: 10px 7px;
+            border: none;
+            background-color: variables.$text-color;
+            color: whitesmoke;
+            border-radius: 7px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover{
+                background-color: variables.$text-color-dark;
+            }
+        }
+        
+    }
+}

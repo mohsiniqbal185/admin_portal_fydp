@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-const FormInput = ({label,value,type,name,setValue}) => {
+const FormInput = ({label,value,type,name,setValue,disabled,multiple,allow}) => {
     return ( 
         <>
         <TextField 
@@ -14,6 +14,9 @@ const FormInput = ({label,value,type,name,setValue}) => {
         onChange={setValue}
         type={type}
         required
+        disabled={disabled}
+        inputProps={multiple}
+        accept={allow}
         />
         </>
      );
