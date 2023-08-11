@@ -29,7 +29,7 @@ import SingleTokenPayments from "../pages/singleTokenPayments/SingleTokenPayment
 import ViewTokenTransactionsDetail from "../pages/viewTokenTransactionsDetail/ViewTokenTransactionsDetail";
 import ManageTokenTransactionsDetail from "../pages/manageTokenTransactionsDetail/ManageTokenTransactionsDetail";
 import TokenPaymentsDetail from "../pages/tokenPaymentsDetail/TokenPaymentsDetail";
-
+import TransferTokens from "../pages/TransferTokens/TransferTokens";
   const AppLayout = ()=>{
     return(
       <Layout>
@@ -54,6 +54,10 @@ import TokenPaymentsDetail from "../pages/tokenPaymentsDetail/TokenPaymentsDetai
           <Route index element={<ViewTokenTransactions/>}/>
           <Route path=":projectId" element={<SingleViewTokenTransactions/>}/>
           <Route path=":projectId/:viewId" element={<ViewTokenTransactionsDetail/>}/>
+        </Route>
+        <Route path="transfer_tokens">
+          <Route index element = {<TransferTokens/>}/>
+
         </Route>
         <Route path="view-transactions-rental">
           <Route index element={<ViewRentalTransactions/>}/>
