@@ -5,7 +5,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { Link } from 'react-router-dom';
 import { Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
-// import logo from "../../assets/logo8.png"
+import logo from "../../assets/logo.png"
 // import useAuthStore from '../../context/AuthContext';
 // import axios from 'axios';
 
@@ -55,7 +55,8 @@ function Navbar({setLoggedIn}) {
     <div className='navbar'>
         <div className="wrapper">
             <div className="top">
-                <Link to="/" style={{textDecoration: "none"}}>
+                <Link to="/" className='navbar-logo'>
+                    <img src={logo} alt="Logo Image"/>
                     <span className='logo'>Asaan Portal<sup className='admin-tag'>Admin</sup></span>
                 </Link>
             </div>

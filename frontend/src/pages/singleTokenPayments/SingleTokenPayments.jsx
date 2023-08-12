@@ -16,7 +16,7 @@ function SingleTokenPayments() {
 
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['propertyData'],
+    queryKey: ['propertyDataPayments'],
     queryFn: () =>
       axios.get(`/api/admin/view_token_payments/${projectId}`).then(
           (res) => res.data

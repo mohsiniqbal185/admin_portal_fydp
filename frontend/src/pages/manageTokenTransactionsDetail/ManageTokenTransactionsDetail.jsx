@@ -15,7 +15,7 @@ function FieldsForInfo(){
 
   const { isLoading, error, data } = useQuery({
   
-    queryKey: ['propertyData'],
+    queryKey: ['propertyDataManageSingle'],
     queryFn: () =>
     
       axios.get(`/api/admin/manage_token_transactions/manage/${manageId}`).then(

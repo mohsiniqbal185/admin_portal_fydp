@@ -9,9 +9,9 @@ function Datatable({title,userColumns,userRows,pending}) {
 
     const [inputValue,setInputValue] = useState('')
 
-    const rows = pending ? userRows.filter((row)=>row.status === "pending"): pending === undefined ? userRows :userRows.filter((row)=>row.status !== "pending");
+    // const rows = pending ? userRows.filter((row)=>row.status === "pending"): pending === undefined ? userRows :userRows.filter((row)=>row.status !== "pending");
 
-    const inputRows = inputValue === '' ? rows : rows.filter((val,i)=>val.username.slice(0,inputValue.length).toLowerCase() === inputValue.slice(0,inputValue.length).toLowerCase())
+    // const inputRows = inputValue === '' ? rows : rows.filter((val,i)=>val.username.slice(0,inputValue.length).toLowerCase() === inputValue.slice(0,inputValue.length).toLowerCase())
 
   return (
     <div className='datatable'>
@@ -20,10 +20,10 @@ function Datatable({title,userColumns,userRows,pending}) {
             <h4>{title}</h4>
             <input type="text" placeholder='Search' value={inputValue} onChange={(e)=>setInputValue(e.target.value)}/>
         </div>
-        {inputRows.length !== 0 ?
+        {userRows.length > 0 ?
         <DataGrid
             className='datagrid'
-            rows={inputRows}
+            rows={userRows}
             columns={userColumns}
             sx={{color:'#2c45a8',fontWeight:'700'}}
             initialState={{
@@ -33,12 +33,11 @@ function Datatable({title,userColumns,userRows,pending}) {
             }}
             pageSizeOptions={[5, 10]}
             checkboxSelection
-        />
-        :
+        />:
         <div className='no-results'>
             <ThumbDownAltOutlinedIcon/>&nbsp;No Results Available!
         </div>
-        }
+    }
         </div>
     </div>
   )

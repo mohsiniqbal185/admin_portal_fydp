@@ -13,7 +13,7 @@ function SingleManageTokenTransactions() {
   const {projectId} = useParams()
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['propertyData'],
+    queryKey: ['propertyDataManage'],
     queryFn: () =>
       axios.get(`/api/admin/manage_token_transactions/${projectId}`).then(
           (res) => res.data
@@ -28,6 +28,11 @@ function SingleManageTokenTransactions() {
       }
     },[data])
 
+    console.log(data)
+
+    console.log(userRowsPending)
+
+    console.log(userColumnsPending)
   return (
     <div>
       <Header title='Manage Token Transactions' iconProp={<ApartmentOutlinedIcon/>}/>
