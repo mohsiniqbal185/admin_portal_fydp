@@ -30,6 +30,7 @@ import ViewTokenTransactionsDetail from "../pages/viewTokenTransactionsDetail/Vi
 import ManageTokenTransactionsDetail from "../pages/manageTokenTransactionsDetail/ManageTokenTransactionsDetail";
 import TokenPaymentsDetail from "../pages/tokenPaymentsDetail/TokenPaymentsDetail";
 import TransferTokens from "../pages/TransferTokens/TransferTokens";
+import SingleEditProperty from "../pages/singleEditProperty/SingleEditProperty";
   const AppLayout = ()=>{
     return(
       <Layout>
@@ -77,7 +78,10 @@ import TransferTokens from "../pages/TransferTokens/TransferTokens";
           <Route path=":projectId" element={<SingleTokenPayments/>}/>
           <Route path=":projectId/:paymentId" element={<TokenPaymentsDetail/>}/>
         </Route>
-        <Route path="edit-property" element={<EditProperty/>}/>
+        <Route path="edit-property">
+          <Route index element={<EditProperty/>}/>
+          <Route path=":projectId" element={<SingleEditProperty/>}/>
+        </Route>
         <Route path="create-property" element={<CreateProperty/>}/>
         <Route path="token-market-sale" element={<TokenMarketSale/>}/>
         <Route path="settings" element={<Settings/>}/>
