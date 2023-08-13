@@ -6,6 +6,12 @@ import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRig
 import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom'
+import {motion} from 'framer-motion'
+
+export const slideVariants = {
+    initial: { y: 100, opacity: 0.6 },
+    animate: { y: 0, opacity: 1, transition: { duration: 0.2 } },
+  };
 
 function ProductCard({project,i,pathname}) {
 
@@ -16,7 +22,7 @@ function ProductCard({project,i,pathname}) {
     const token_price = token_value;
 
   return (
-    <div className='card'>
+    <motion.div className='card' variants={slideVariants} initial='initial' animate='animate'>
         <div className='image-container'>
             <img src={property} alt="Property-image" />
             <div className="dark-overlay"></div>
@@ -32,7 +38,7 @@ function ProductCard({project,i,pathname}) {
             <button onClick={()=>navigate(`${pathname}/${property_id}`)}><span>Explore</span>&nbsp;<KeyboardArrowRightOutlinedIcon className='icon'/></button>
             
         </div>
-    </div>
+    </motion.div>
   )
 }
 

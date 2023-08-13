@@ -35,7 +35,7 @@ function FieldsForInfo(){
     };
   }, []);
 
-    const details = [{title:'Payment ID', value:userRowsPending.payment_id},{title:'Payment Method', value:userRowsPending.payment_method},{title:'Payment From', value:userRowsPending.UserName},{title:'DateTime', value:userRowsPending.DATE_TIME},{title:'Payment Status', value:userRowsPending.payment_status},{title:'PaymentAmount', value:userRowsPending.Payment_Amount}]
+    const details = [{title:'Payment ID', value:userRowsPending.payment_id},{title:'Payment Method', value:userRowsPending.payment_method},{title:'Payment From', value:userRowsPending.UserName},{title:'DateTime', value:userRowsPending.DATE_TIME},{title:'Payment Status', value:userRowsPending.payment_status},{title:'Payment Amount', value:userRowsPending.Payment_Amount}]
     return (
       <>
       <InfoFields details={details}/>

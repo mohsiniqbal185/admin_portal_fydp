@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-const FormInput = ({label,value,type,name,setValue,disabled,multiple,allow}) => {
+const FormInput = ({label,value,type,name,setValue,disabled,multiple,accept}) => {
     return ( 
         <>
         <TextField 
@@ -16,7 +16,7 @@ const FormInput = ({label,value,type,name,setValue,disabled,multiple,allow}) => 
         required
         disabled={disabled}
         inputProps={multiple}
-        accept={allow}
+        accept={accept}
         />
         </>
      );

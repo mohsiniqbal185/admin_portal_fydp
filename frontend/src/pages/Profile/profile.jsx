@@ -82,7 +82,7 @@ function Profile() {
                 setUsersData(res.data.user)
                 setData(res.data.transactionsData)
                 setPendingData(res.data.PendingTransactionsData)
-                // console.log(res)
+                console.log(res.data)
             }
             catch (error) {
                 console.log(error);

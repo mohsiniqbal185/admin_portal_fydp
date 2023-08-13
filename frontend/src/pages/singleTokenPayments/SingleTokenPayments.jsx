@@ -45,8 +45,7 @@ function SingleTokenPayments() {
       <Header title='Completed Payments' iconProp={<ApartmentOutlinedIcon/>} caption={'Token Payments'}/> 
       <Datatable userRows={userRows} userColumns={userColumns}/>
       <Header title='Pending Payments' iconProp={<ApartmentOutlinedIcon/>} caption={'Token Payments'}/> 
-
-        <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
+      <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
     </div>
   )
 }

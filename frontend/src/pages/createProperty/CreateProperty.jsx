@@ -19,7 +19,6 @@ function CreateProperty() {
 
   function handleContractInputs(e){
     setSmartContractValues({...smartContractValues,[e.target.name]:e.target.value})
-    console.log('dsa')
   }
 
   function handlePropertyInputs(e){
@@ -61,7 +60,7 @@ function CreateProperty() {
   return (
     <div>
         <Header title={headerOptions.title}/>
-        <div className='contract-form'>
+        <div className='create-form'>
           {!show ?
           <form onSubmit={handleSmartContract}>
             {smartContractInput.map((input)=>(
