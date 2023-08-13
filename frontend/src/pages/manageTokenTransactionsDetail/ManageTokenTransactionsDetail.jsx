@@ -27,10 +27,10 @@ function FieldsForInfo(){
       setVerifyPayment(response.data[0]);
   
   };
-  const handleTransferTokens   =  (no_of_tokens,user_wallet_address,property_contract_address,property_id,pledger_id,payment_id,req_id,tokens_sold) =>{
+  const handleTransferTokens   =  (no_of_tokens,user_wallet_address,property_contract_address,property_id,pledger_id,payment_id,req_id,tokens_sold,token_value_id) =>{
     const confirmed = window.confirm('Are you sure you want to transfer tokens?');
     if (confirmed) {
-      window.location.href=`/transfer_tokens?no_of_tokens=`+no_of_tokens+`&user_wallet_address=`+user_wallet_address+`&property_contract_address=`+property_contract_address+`&property_id=`+property_id+`&pledger_id=`+pledger_id+`&payment_id=`+payment_id+`&req_id=`+req_id+`&tokens_sold=`+tokens_sold;
+      window.location.href=`/transfer_tokens?no_of_tokens=`+no_of_tokens+`&user_wallet_address=`+user_wallet_address+`&property_contract_address=`+property_contract_address+`&property_id=`+property_id+`&pledger_id=`+pledger_id+`&payment_id=`+payment_id+`&req_id=`+req_id+`&tokens_sold=`+tokens_sold+`&token_value_id=`+token_value_id;
     }
   }
   const handleVerifyPayment = () => {
@@ -67,7 +67,7 @@ function FieldsForInfo(){
 
       <div className='btn'>
       {data?.payment_status === 'VERIFIED' && (
-        <button onClick={() => handleTransferTokens(data?.no_of_tokens,data?.Client_Wallet_Address,data?.Property_Contract_Address,data?.property_id,data?.Pledger_ID,data?.payment_id,data?.req_id,data?.TokensSold)}>Transfer Tokens</button>
+        <button onClick={() => handleTransferTokens(data?.no_of_tokens,data?.Client_Wallet_Address,data?.Property_Contract_Address,data?.property_id,data?.Pledger_ID,data?.payment_id,data?.req_id,data?.TokensSold,data?.token_value_id)}>Transfer Tokens</button>
         )}
         </div>
     

@@ -6,47 +6,56 @@ const handleCopy=(params)=>{
 export const userColumnsPending = [
     { 
         field: "id", 
-        headerName: "Request ID", 
-        width: 100 
+        headerName: "ID", 
+        width: 70 
     },
+ 
     {
-        field: "pledger_id",
-        headerName: "Pledger ID",
+        field: "property_name",
+        headerName: "Property Name",
         width:150
     },
     {
-        field: "pledger_name",
-        headerName: "Pledger Name",
+        field: "property_id",
+        headerName: "Property ID",
         width:150
     },
-    {
-        field: "payment_status",
-        headerName: "Payment Status",
-        width:150
-    },
+
     {
         field: "token_name",
         headerName: "Token Name",
         width:150
     },
     {
-        field: "date_of_request",
-        headerName: "Date of Request",
-        width:150
+        field: "number_of_tokens",
+        headerName: "Number of Tokens Pledged",
+        width:200
     },
+    {
+        field: "number_of_tokens_remaining",
+        headerName: "Number of Tokens Remaining",
+        width:220
+    },
+
     {
         field: "status",
         headerName: "Status",
         width:150
     },
+
     {
-        field: "number_of_tokens",
-        headerName: "Number of Tokens",
+        field: "transaction_value",
+        headerName: "Transaction Value",
         width:150
     },
     {
-        field: "remaining_tokens",
-        headerName: "Remaining Tokens",
+        field: "date_of_request",
+        headerName: "Date Of Request",
+        width:250
+    },
+    {
+        field: "payment_status",
+        headerName: "Payment Status",
         width:150
     },
     {
@@ -55,11 +64,13 @@ export const userColumnsPending = [
         width:150,
         renderCell: (params)=> {
             return (
-                <div className='cellAction'>
-                    <Link to={`#`} style={{textDecoration: "none"}}>
-                        <div className='viewButton'>Manage</div>
-                    </Link>
-                </div>
+                (params.row.payment_status!='PENDING'?<div className='cellAction'>
+                <Link to={`/manage-transactions-token/${params.row.property_id}/manage/${params.row.id}`} style={{textDecoration: "none"}}>
+                    <div className='viewButton'>Manage</div>
+                </Link>
+            </div>:<div className='cellAction'>
+                    <div className='viewButton' disabled={true}>Cannot manage</div></div>
+                )
             )
         }
     }
@@ -70,15 +81,16 @@ export const userColumnsPending = [
     const dummyArr = []
     data?.map((d)=>{
       const newVal = {
-        id: d.req_id,
-        pledger_id:d.pledger_id,
-        pledger_name:d.name,
-        payment_status:d.payment_status,
+        id:d.req_id,
+        property_name:d.Property_Name,
+        property_id:d.property_id,
         token_name:d.token_name,
-        date_of_request:d.date_of_request,
-        status:d.Status,
         number_of_tokens:d.no_of_tokens,
-        remaining_tokens:d.RemainingTokens,
+        number_of_tokens_remaining:d.RemainingTokens,
+        status:d.Status,
+        transaction_value:d.TransactionValue,
+        date_of_request:d.date_of_request,
+        payment_status:d.payment_status,
     }
       dummyArr.push(newVal)
     })

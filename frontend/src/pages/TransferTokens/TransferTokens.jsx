@@ -74,6 +74,7 @@ function TransferTokens() {
   const payment_id = queryParams.get('payment_id');
   const tokens_sold = queryParams.get('tokens_sold');
   const req_id = queryParams.get('req_id');
+  const token_value_id = queryParams.get('token_value_id');
 
   const [showProgress, setShowProgress] = useState(true);
   const [progressMessage, setProgressMessage] = useState('Processing Transfer');
@@ -95,6 +96,7 @@ function TransferTokens() {
               payment_id: payment_id,
               req_id: req_id,
               tokens_sold: tokens_sold,
+              token_value_id:token_value_id
             },
           });
           // setData(res.data);

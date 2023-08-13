@@ -7,26 +7,31 @@ export const userColumnsPending = [
         width: 70 
     },
     {
+        field: "pledger_id",
+        headerName: "Pledger ID",
+        width:100
+    },
+    {
         field: "pledger_name",
         headerName: "Pledger Name",
-        width:150
+        width:200
     },
  
     {
         field: "property_name",
         headerName: "Property Name",
-        width:150
+        width:200
     },
     {
         field: "property_id",
         headerName: "Property ID",
-        width:150
+        width:100
     },
 
     {
         field: "token_name",
         headerName: "Token Name",
-        width:150
+        width:200
     },
     {
         field: "number_of_tokens",
@@ -66,11 +71,13 @@ export const userColumnsPending = [
         width:150,  
         renderCell: (params)=> {
             return (
-                <div className='cellAction'>
-                    <Link to={`/manage-transactions-token/${params.row.property_id}/manage/${params.row.id}`} style={{textDecoration: "none"}}>
-                        <div className='viewButton'>Manage Payment</div>
-                    </Link>
-                </div>
+                (params.row.payment_status!='PENDING'?<div className='cellAction'>
+                <Link to={`/manage-transactions-token/${params.row.property_id}/manage/${params.row.id}`} style={{textDecoration: "none"}}>
+                    <div className='viewButton'>Manage</div>
+                </Link>
+            </div>:<div className='cellAction'><Link to={`/users/profile?user_id=${params.row.pledger_id}`} style={{textDecoration: "none"}}>
+                    <div className='viewButton'>View User Details</div>
+                </Link></div>)
             )
         }  
     }
@@ -82,6 +89,7 @@ export const userColumnsPending = [
     data?.map((d)=>{
       const newVal = {
         id:d.req_id,
+        pledger_id:d.Pledger_ID,
         pledger_name:d.Pledger_Name,
         property_name:d.Property_Name,
         property_id:d.property_id,

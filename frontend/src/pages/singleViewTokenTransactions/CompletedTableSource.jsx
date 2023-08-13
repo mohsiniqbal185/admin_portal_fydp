@@ -35,6 +35,11 @@ export const userColumnsCompleted = [
         width:150
     },
     {
+        field: "payment_id",
+        headerName: "Payment ID",
+        width:150
+    },
+    {
         field: "transaction_hash",
         headerName: "Transaction Hash",
         width:150,
@@ -55,7 +60,7 @@ export const userColumnsCompleted = [
         renderCell: (params)=> {
             return (
                 <div className='cellAction'>
-                    <Link to={`manage-transactions-token/1${params.row.id}`} style={{textDecoration: "none"}}>
+                    <Link to={`/view-payments-token/${params.row.property_id}/${params.row.payment_id}`} style={{textDecoration: "none"}}>
                         <div className='viewButton'>View</div>
                     </Link>
                 </div>
@@ -69,7 +74,7 @@ export const userColumnsCompleted = [
         renderCell: (params)=> {
             return (
                 <div className='cellAction'>
-                    <Link to={`https://etherscan.io/tx/${params.row.transaction_hash}`} style={{textDecoration: "none"}}>
+                    <Link to={`https://sepolia.etherscan.io/tx/${params.row.transaction_hash}`} target="_blank" style={{textDecoration: "none"}}>
                         <div className='viewButton'>View</div>
                     </Link>
                 </div>
@@ -84,12 +89,15 @@ export const userColumnsCompleted = [
     data?.map((d)=>{
       const newVal = {
         id: d.token_transaction_id,
-        holder_name:d.fname + ' ' +d.lname,
+        holder_name:d.fname+ ' ' +d.lname,
         property_name:d.name,
         property_id:d.property_id,
         sender_id:d.sender_id,
         number_of_tokens:d.no_of_tokens,
         transaction_hash:d.transaction_hash,
+        payment_id:d.payment_id,
+
+
     }
       dummyArr.push(newVal)
     })

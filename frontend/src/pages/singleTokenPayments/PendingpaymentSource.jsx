@@ -29,7 +29,7 @@ export const userColumnsPending = [
     },
     {
         field: "transaction_id",
-        headerName: "Transaction ID",
+        headerName: "Request ID",
         width: 150
     },
     {
@@ -47,7 +47,7 @@ export const userColumnsPending = [
             return (
                 <div className='cellAction'>
                     <Link to={`/view-payments-token/${projectId}/${params.row.id}`} style={{textDecoration: "none"}}>
-                        <div className='viewButton'>Manage</div>
+                        <div className='viewButton'>View</div>
                     </Link>
                 </div>
             )
@@ -65,7 +65,7 @@ export const userColumnsPending = [
         payment_from:d.UserName,
         user_id:d.UserID,
         datetime:d.DATE_TIME,
-        transaction_id:d.transaction_id,
+        transaction_id:d.req_id,
         payment_status:d.payment_status,
     }
       dummyArr.push(newVal)

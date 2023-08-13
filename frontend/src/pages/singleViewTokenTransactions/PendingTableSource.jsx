@@ -7,6 +7,12 @@ export const userColumnsPending = [
         width: 70 
     },
     {
+    field: "pledger_id",
+    headerName: "Pledger ID",
+    width:150
+},
+
+    {
         field: "pledger_name",
         headerName: "Pledger Name",
         width:150
@@ -44,7 +50,11 @@ export const userColumnsPending = [
         headerName: "Status",
         width:150
     },
-
+    {
+        field: "token_value",
+        headerName: "Token Value",
+        width:150
+    },
     {
         field: "transaction_value",
         headerName: "Transaction Value",
@@ -60,17 +70,21 @@ export const userColumnsPending = [
         headerName: "Payment Status",
         width:150
     },
+  
     {
         field: "action", 
         headerName: "Action",
         width:150,  
         renderCell: (params)=> {
             return (
-                <div className='cellAction'>
-                    <Link to={`/manage-transactions-token/${params.row.property_id}/${params.row.id}`} style={{textDecoration: "none"}}>
+                (params.row.payment_status!='PENDING'?<div className='cellAction'>
+                    <Link to={`/manage-transactions-token/${params.row.property_id}/manage/${params.row.id}`} style={{textDecoration: "none"}}>
                         <div className='viewButton'>Manage</div>
                     </Link>
-                </div>
+                </div>:<div className='cellAction'><Link to={`/users/profile?user_id=`+params.row.pledger_id} style={{textDecoration: "none"}}>
+                       <div className='viewButton'>View User Details</div>
+                    </Link>
+                    </div>)
             )
         }  
     }
@@ -82,6 +96,7 @@ export const userColumnsPending = [
     data?.map((d)=>{
       const newVal = {
         id:d.req_id,
+        pledger_id:d.Pledger_ID,
         pledger_name:d.Pledger_Name,
         property_name:d.Property_Name,
         property_id:d.property_id,
@@ -89,9 +104,11 @@ export const userColumnsPending = [
         number_of_tokens:d.no_of_tokens,
         number_of_tokens_remaining:d.RemainingTokens,
         status:d.Status,
+        token_value:d.TokenValue,
         transaction_value:d.TransactionValue,
         date_of_request:d.date_of_request,
         payment_status:d.payment_status,
+        
 
     }
       dummyArr.push(newVal)
