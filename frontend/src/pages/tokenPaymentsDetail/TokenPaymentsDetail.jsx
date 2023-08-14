@@ -9,7 +9,8 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 function FieldsForInfo(){
   
- 
+    const PF = import.meta.env.VITE_APP_PUBLIC_FOLDER;
+
      const [userRowsPending,setUserRowsPending] = useState([])
      const {projecttId}= useParams();
      const [isLoading, setIsLoading] = useState(true);
@@ -35,13 +36,16 @@ function FieldsForInfo(){
     };
   }, []);
 
-    const details = [{title:'Payment ID', value:userRowsPending.payment_id},{title:'Payment Method', value:userRowsPending.payment_method},{title:'Payment From', value:userRowsPending.Payment_From},{title:'DateTime', value:userRowsPending.DateTime},{title:'Payment Status', value:userRowsPending.payment_status},{title:'Payment Amount', value:userRowsPending.payment_amount}]
+    const details = [{title:'Payment ID', value:userRowsPending.payment_id},{title:'Payment Method', value:userRowsPending.payment_method},{title:'Payment From', value:userRowsPending.Payment_From},{title:'DateTime', value:userRowsPending.DateTime},{title:'Payment Status', value:userRowsPending.payment_status},{title:'Payment Amount', value:userRowsPending.payment_amount},{title:'payment_receipt_file_name',value:userRowsPending.payment_receipt_file_name}]
     return (
       <>
       <InfoFields details={details}/>
       <div className='receipt-link'>
         View Payment Receipt
       </div>
+      <div className='paymentReceipt'>
+      <img src={PF+userRowsPending.payment_receipt_file_name} className='paymentReceiptPicture'/>
+     </div>
     </>
   )
 }

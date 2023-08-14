@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 function FieldsForInfo(){
+  const PF = import.meta.env.VITE_APP_PUBLIC_FOLDER;
   const [userRowsPending,setUserRowsPending] = useState([])
   const [verifyPayment,setVerifyPayment] = useState([])
   const {manageId}= useParams();
@@ -51,9 +52,11 @@ function FieldsForInfo(){
     <>
       <InfoFields details={details}/>
       {data?.payment_status === 'BEING PROCESSED' && (
-      <div className='receipt-link'>
-            View Payment Receipt
-      </div>
+      <div className='paymentReceipt'>
+      <img src={PF+userRowsPending.payment_receipt_file_name} className='paymentReceiptPicture'/>
+     </div>
+      
+
            )}
       <div className='btn'>
       

@@ -111,6 +111,8 @@ function CreateProperty() {
     if (response.ok) {
       const responseData = await response.json();
       alert(responseData.message);
+      window.location.href = '/';
+
 
 
 

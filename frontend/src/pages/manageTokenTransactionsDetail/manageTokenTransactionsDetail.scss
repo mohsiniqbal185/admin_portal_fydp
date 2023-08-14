@@ -16,3 +16,13 @@
         border-radius: 3px;
     }
 }
+.paymentReceipt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.paymentReceiptPicture{
+    height: 100%;
+    width: 60vw;
+    object-fit: cover;
+}
