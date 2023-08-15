@@ -8,11 +8,13 @@ import PersonalDetails from "../../components/settings/personalDetails/PersonalD
 import BankDetails from "../../components/settings/bankDetails/BankDetails"
 import WalletDetails from "../../components/settings/walletDetails/WalletDetails"
 
-const tabHeadings = [{title:'Personal Details',caption:'Please keep your personal information up-to-date at all times. We do not share your information with any third party.',component:<PersonalDetails/>},
+const tabHeadings = [
+  {title:'Personal Details',caption:'Please keep your personal information up-to-date at all times. We do not share your information with any third party.',component:<PersonalDetails/>},
 {title:'Bank Details',caption:'Your personal information is completely secure and we don’t share it with anyone.',component:<BankDetails/>},
-{title:'Wallet Details',caption:'You can share your wallet address with others using the code below.',component:<WalletDetails/>}]
+{title:'Wallet Details',caption:'You can share your wallet address with others using the code below.',component:<WalletDetails/>},
+]
 
-const headerOptions = {title:'Settings',caption:'Manage your account'}
+const headerOptions = {title:'Settings'}
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;

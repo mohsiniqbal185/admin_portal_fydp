@@ -31,6 +31,12 @@ import ManageTokenTransactionsDetail from "../pages/manageTokenTransactionsDetai
 import TokenPaymentsDetail from "../pages/tokenPaymentsDetail/TokenPaymentsDetail";
 import TransferTokens from "../pages/TransferTokens/TransferTokens";
 import SingleEditProperty from "../pages/singleEditProperty/SingleEditProperty";
+import SingleUpdateTokenValue from "../pages/singleUpdateTokenValue/SingleUpdateTokenValue";
+import UpdateTokenValue from "../pages/updateTokenValue/updateTokenValue";
+import SingleMarketSale from "../pages/singleMarketSale/SingleMarketSale";
+
+
+
   const AppLayout = ()=>{
     return(
       <Layout>
@@ -83,7 +89,14 @@ import SingleEditProperty from "../pages/singleEditProperty/SingleEditProperty";
           <Route path=":projectId" element={<SingleEditProperty/>}/>
         </Route>
         <Route path="create-property" element={<CreateProperty/>}/>
-        <Route path="token-market-sale" element={<TokenMarketSale/>}/>
+        <Route path="token-market-sale">
+          <Route index element={<TokenMarketSale/>}/>
+          <Route path=":req_id" element={<SingleMarketSale/>}/>
+        </Route>
+        <Route path="update-token-value">
+          <Route index element={<UpdateTokenValue/>}/>
+          <Route path=":projectId" element={<SingleUpdateTokenValue/>}/>
+        </Route>
         <Route path="settings" element={<Settings/>}/>
       </Route>
       </>

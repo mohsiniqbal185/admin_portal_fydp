@@ -105,17 +105,23 @@ export const list = [
         href: "/token-market-sale",
         icon: <StoreOutlinedIcon className="icon" />,
       },
-    ],
-  },
-  {
-    title: "Service",
-    links: [
       {
         type: "Link",
-        text: "Settings",
-        href: "/settings",
-        icon: <SettingsIcon className="icon" />,
+        text: "Update Token Value",
+        href: "/update-token-value",
+        icon: <StoreOutlinedIcon className="icon" />,
       },
     ],
   },
+  // {
+  //   title: "Service",
+  //   links: [
+  //     {
+  //       type: "Link",
+  //       text: "Settings",
+  //       href: "/settings",
+  //       icon: <SettingsIcon className="icon" />,
+  //     },
+  //   ],
+  // },
 ];

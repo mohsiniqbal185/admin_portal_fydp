@@ -35,7 +35,7 @@ function ProductCard({project,i,pathname}) {
                 <small className='address'><AccountTreeOutlinedIcon className='addr-icon'/>{property_type}</small>
                 {/* <p>{desc}</p> */}
             </div>
-            <button onClick={()=>navigate(`${pathname}/${property_id}`)}><span>Explore</span>&nbsp;<KeyboardArrowRightOutlinedIcon className='icon'/></button>
+            <button onClick={()=>navigate(`${pathname}/${property_id}`,{state:{project}})}><span>Explore</span>&nbsp;<KeyboardArrowRightOutlinedIcon className='icon'/></button>
             
         </div>
     </motion.div>
