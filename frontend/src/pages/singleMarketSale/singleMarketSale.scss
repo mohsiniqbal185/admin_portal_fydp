@@ -1,5 +1,16 @@
 @use '../../utilities/variables';
 
+.progress-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .circular-progress {
+    color: #007bff; /* Blue color */
+    margin-bottom: 10px;
+  }
+
+
 form{
 
     .form-btn{

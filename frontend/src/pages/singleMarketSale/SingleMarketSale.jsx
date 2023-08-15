@@ -5,11 +5,13 @@ import Header from '../../components/header/Header'
 import InfoFields from '../../components/infoFields/InfoFields'
 import Container from '../../components/container/Container'
 import './singleMarketSale.scss'
+import CircularProgress from '@mui/material/CircularProgress';
 
 const headerOptions = {title:'Token Market Sale'}
 
 function SingleMarketSale() {
   const [data,setData] = useState([])
+  const [showProgress, setShowProgress] = useState(false);
   const {req_id} = useParams()
 
   useEffect(()=>{
@@ -29,6 +31,7 @@ function SingleMarketSale() {
 
   async function handleForm(e){
     e.preventDefault()
+    setShowProgress(true)
     try{
       const res = await axios.post(`/api/admin/manage_token_transactions/manage_sale/verify/${req_id}`,{
         ...data,
@@ -37,10 +40,12 @@ function SingleMarketSale() {
       if (res.status == 200){
           console.log('success')
       }
-  }
-  catch(err){
-      console.log(err)
-  }
+    }
+    catch(err){
+        console.log(err)
+    }finally{
+      setShowProgress(false)
+    }
   }
 
   const details = [
@@ -83,6 +88,7 @@ function SingleMarketSale() {
 
   return (
     <div>
+        {showProgress && <CircularProgress className="circular-progress" />}
         <Header title={headerOptions.title}/>
         <Container tab={{title:'Token Details',caption:'The token details are listed below.',component:<FieldsForInfo/>}}/>
     </div>
