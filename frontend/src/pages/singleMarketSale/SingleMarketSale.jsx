@@ -39,6 +39,7 @@ function SingleMarketSale() {
       })
       if (res.status == 200){
           console.log('success')
+          window.location.href='/';
       }
     }
     catch(err){
@@ -87,10 +88,25 @@ function SingleMarketSale() {
 
 
   return (
-    <div>
-        {showProgress && <CircularProgress className="circular-progress" />}
-        <Header title={headerOptions.title}/>
-        <Container tab={{title:'Token Details',caption:'The token details are listed below.',component:<FieldsForInfo/>}}/>
+    // <div>
+    //     {showProgress && <CircularProgress className="circular-progress" />}
+    //     <Header title={headerOptions.title}/>
+    //     <Container tab={{title:'Token Details',caption:'The token details are listed below.',component:<FieldsForInfo/>}}/>
+    // </div>
+    <div className="container">
+      {showProgress ? (
+        <div className="loading-container">
+          <div className="loading-message">Tranferring Tokens ...</div>
+          <CircularProgress className="circular-progress" />
+        </div>
+      ) : (
+        <>
+          <Header title={headerOptions.title} />
+          <Container
+            tab={{ title: 'Token Details', caption: 'The token details are listed below.', component: <FieldsForInfo /> }}
+          />
+        </>
+      )}
     </div>
   )
 }
