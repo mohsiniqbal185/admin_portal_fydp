@@ -42,19 +42,12 @@ function SingleTokenPayments() {
 
   return (
     <div>
-<<<<<<< Updated upstream
-      <Header title='Completed Payments' iconProp={<ApartmentOutlinedIcon/>} caption={'Token Payments'}/> 
-      <Datatable userRows={userRows} userColumns={userColumns}/>
-      <Header title='Pending Payments' iconProp={<ApartmentOutlinedIcon/>} caption={'Token Payments'}/> 
-      <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
-=======
       <Header title='Pending Transactions' iconProp={<ApartmentOutlinedIcon />} caption={'Token Payments'} />
 
       <Datatable userRows={userRowsPending} userColumns={userColumnsPending} />
       <Header title='Completed Transactions' iconProp={<ApartmentOutlinedIcon />} caption={'Token Payments'} />
       <Datatable userRows={userRows} userColumns={userColumns} />
 
->>>>>>> Stashed changes
     </div>
   )
 }

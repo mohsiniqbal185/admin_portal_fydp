@@ -23,6 +23,21 @@ function FieldsForInfo(){
           (res) => res.data[0]
       ),
   })
+  // useEffect(()=>{
+  //   async function fetchRow(e){
+  //     try{
+  //         const res = await axios.get(`/api/admin/manage_token_transactions/manage/${manageId}`)
+
+  //         if (res.status == 200){
+  //             (res) => res.data[0]
+  //         }
+  //     }
+  //     catch(err){
+  //         console.log(err)
+  //     }
+  //   }
+  //   fetchRow()
+  // },[])
   const VerifyPayment = async () => {
       const response = await axios.get(`/api/admin/manage_token_transactions/manage/verify/${manageId}`);
       setVerifyPayment(response.data[0]);
