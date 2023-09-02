@@ -6,6 +6,8 @@ import Datatable from '../../datatable/Datatable';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { slideVariants } from '../../productCard/ProductCard';
+import { motion } from 'framer-motion';
 
 function ProfileTokenTransactions() {
   const [userRowsCompleted,setUserRowsCompleted] = useState([])
@@ -32,10 +34,10 @@ function ProfileTokenTransactions() {
   },[data])
 
   return (
-    <div className=''>
+    <motion.div variants={slideVariants} initial='initial' animate='animate'>
         <Datatable title="Completed Transactions" userRows={userRowsCompleted} userColumns={userColumnsCompleted}/>
         <Datatable title="Pending Transactions" userRows={userRowsPending} userColumns={userColumnsPending}/>
-    </div>
+    </motion.div>
   )
 }
 

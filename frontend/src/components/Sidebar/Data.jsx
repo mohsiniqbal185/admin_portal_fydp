@@ -48,11 +48,11 @@ export const list = [
             href: "/view-transactions-token",
             icon: <ReceiptOutlinedIcon className="icon" />,
           },
-          {
-            text: "Rental Transactions",
-            href: "/view-transactions-rental",
-            icon: <PaymentsOutlinedIcon className="icon" />,
-          },
+          // {
+          //   text: "Rental Transactions",
+          //   href: "/view-transactions-rental",
+          //   icon: <PaymentsOutlinedIcon className="icon" />,
+          // },
         ],
       },
       {
@@ -73,11 +73,11 @@ export const list = [
             href: "/manage-transactions-token",
             icon: <ReceiptOutlinedIcon className="icon" />,
           },
-          {
-            text: "Rental Transactions",
-            href: "/manage-transactions-rental",
-            icon: <PaymentsOutlinedIcon className="icon" />,
-          },
+          // {
+          //   text: "Rental Transactions",
+          //   href: "/manage-transactions-rental",
+          //   icon: <PaymentsOutlinedIcon className="icon" />,
+          // },
         ],
       },
       {

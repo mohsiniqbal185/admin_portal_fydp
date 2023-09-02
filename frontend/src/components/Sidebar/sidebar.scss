@@ -13,6 +13,7 @@ $text-color-hover: rgb(118, 46, 177);
     position: sticky;
     top: 70px;
     border-right: 0.5px solid #d2d2d2;
+    z-index:50;
 
     hr{
         height: 0;

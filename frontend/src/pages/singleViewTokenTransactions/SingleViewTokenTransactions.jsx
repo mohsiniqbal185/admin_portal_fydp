@@ -8,6 +8,8 @@ import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 import Datatable from '../../components/datatable/Datatable'
 import { handleUserRowsCompleted, userColumnsCompleted } from './CompletedTableSource'
 import { handleUserRowsPending,userColumnsPending } from './PendingTableSource'
+import { slideVariants } from '../../utilities/animations'
+import { motion } from 'framer-motion'
 
 function SingleViewTokenTransactions() {
   const [userRowsCompleted,setUserRowsCompleted] = useState([])
@@ -39,10 +41,13 @@ function SingleViewTokenTransactions() {
   return (
     <div>
       <Header title='View Completed Token Transactions' iconProp={<ApartmentOutlinedIcon/>}/>
-      <Datatable userRows={userRowsCompleted} userColumns={userColumnsCompleted}/>
+      <motion.div variants={slideVariants} initial='initial' animate='animate'>
+        <Datatable userRows={userRowsCompleted} userColumns={userColumnsCompleted}/>
+      </motion.div>
       <Header title='View Pending Token Transactions' iconProp={<ApartmentOutlinedIcon/>}/>
-
-      <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
+      <motion.div variants={slideVariants} initial='initial' animate='animate'>
+        <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
+      </motion.div>
       {/* {/* <div>{userRowsCompleted}</div> */}
     </div>
   )

@@ -47,7 +47,7 @@ function List() {
             <TableRow
               key={txn.transaction_hash}
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className="tableCell">
                 {txn.property_name}
               </TableCell>
               <TableCell className="tableCell">

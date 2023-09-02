@@ -2,6 +2,8 @@ import React from 'react'
 import './home.scss'
 import Widget from '../../components/widget/Widget'
 import List from '../../components/table/Table'
+import { motion } from 'framer-motion'
+import { slideVariants } from '../../utilities/animations'
 // import Widget from '../../components/widget/Widget'
 // import Featured from '../../components/featured/Featured'
 // import Chart from '../../components/chart/Chart'
@@ -9,7 +11,7 @@ import List from '../../components/table/Table'
 
 function Home() {
   return (
-        <div>
+        <motion.div variants={slideVariants} initial="initial" animate="animate">
           <div className="widgets">
             <Widget type='user'/>
             <Widget type='Token Transactions'/>
@@ -20,7 +22,7 @@ function Home() {
             <div className="listTitle">Latest Transactions on Platform</div>
             <List/>
           </div>
-        </div>
+        </motion.div>
   )
 }
 

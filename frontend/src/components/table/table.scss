@@ -1,4 +1,7 @@
+@use '../../utilities/variables';
+
 .table{
+    color: variables.$text-color;
     .cellWrapper{
         display: flex;
         align-items: center;
@@ -24,5 +27,9 @@
             color: rgba(214, 214, 28, 0.856) ;
             background-color: rgb(240, 255, 210);
         }
+    }
+
+    .tableCell{
+        color:#2c45a8;
     }
 }

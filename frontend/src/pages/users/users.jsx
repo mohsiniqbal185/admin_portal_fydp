@@ -6,6 +6,8 @@ import Datatable from "../../components/datatable/Datatable"
 import Header from "../../components/header/Header";
 import { handleUserRows, userColumns } from "./TableSource";
 import { useQuery } from "@tanstack/react-query";
+import { slideVariants } from "../../utilities/animations";
+import { motion } from "framer-motion";
 
 const headerOptions = {title:'Users'}
 
@@ -45,7 +47,9 @@ function Users() {
   return (
   <div>
     <Header title={headerOptions.title}/>
-    <Datatable userRows={userRows} userColumns={userColumns}/>
+    <motion.div variants={slideVariants} initial='initial' animate='animate'>
+      <Datatable userRows={userRows} userColumns={userColumns}/>
+    </motion.div>
   </div>
 );
 }

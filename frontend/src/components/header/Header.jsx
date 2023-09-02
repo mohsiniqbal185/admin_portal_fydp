@@ -1,6 +1,12 @@
 import React from 'react'
 import './header.scss'
 import { list } from '../Sidebar/Data';
+import { motion } from 'framer-motion';
+
+const variants = {
+  initial: { x: -100 },
+  animate: { x: 0,transition:{duration: 1} },
+}
 
 function Header({title,caption,iconProp}) {
 
@@ -25,10 +31,15 @@ function Header({title,caption,iconProp}) {
 
 
   return (
-    <div className='header'>
+    <motion.div 
+    className='header'
+    variants={variants}
+    initial="initial"
+    animate="animate"
+    >
         <h2 className='title'>{iconValue ? <span className='header-icon'>{iconValue}</span> :''}{title}</h2>
         {caption ? <h5 className='caption' style={{marginLeft:iconValue ? '52px':''}}>{caption}</h5>:''}
-    </div>
+    </motion.div>
   )
 }
 

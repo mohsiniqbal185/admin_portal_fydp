@@ -7,6 +7,8 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 import { handleUserRowsPending, userColumnsPending } from './TableSource'
+import { slideVariants } from '../../utilities/animations'
+import { motion } from 'framer-motion'
 
 function SingleManageTokenTransactions() {
   const [userRowsPending,setUserRowsPending] = useState([])
@@ -36,7 +38,9 @@ function SingleManageTokenTransactions() {
   return (
     <div>
       <Header title='Manage Token Transactions' iconProp={<ApartmentOutlinedIcon/>}/>
-      <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
+      <motion.div variants={slideVariants} initial='initial' animate='animate'>
+        <Datatable userRows={userRowsPending} userColumns={userColumnsPending}/>
+      </motion.div>
     </div>
   )
 }

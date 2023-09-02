@@ -23,9 +23,9 @@ function ProfileRentalTransactions() {
   },[])
 
   return (
-    <div>
+    <motion.div variants={slideVariants} initial='initial' animate='animate'>
       <Datatable userRows={userRows} userColumns={userColumns}/>
-    </div>
+    </motion.div>
   )
 }
 

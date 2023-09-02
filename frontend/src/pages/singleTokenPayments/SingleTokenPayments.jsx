@@ -8,6 +8,8 @@ import Header from '../../components/header/Header';
 import { useParams } from 'react-router-dom';
 import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 import { handleUserRowsPending,userColumnsPending } from './PendingpaymentSource'
+import { slideVariants } from '../../utilities/animations';
+import { motion } from 'framer-motion';
 
 function SingleTokenPayments() {
     const [userRows,setUserRows] = useState([])
@@ -43,11 +45,13 @@ function SingleTokenPayments() {
   return (
     <div>
       <Header title='Pending Transactions' iconProp={<ApartmentOutlinedIcon />} caption={'Token Payments'} />
-
-      <Datatable userRows={userRowsPending} userColumns={userColumnsPending} />
+      <motion.div variants={slideVariants} initial='initial' animate='animate'>
+        <Datatable userRows={userRowsPending} userColumns={userColumnsPending} />
+      </motion.div>
       <Header title='Completed Transactions' iconProp={<ApartmentOutlinedIcon />} caption={'Token Payments'} />
-      <Datatable userRows={userRows} userColumns={userColumns} />
-
+      <motion.div variants={slideVariants} initial='initial' animate='animate'>
+        <Datatable userRows={userRows} userColumns={userColumns} />
+      </motion.div>
     </div>
   )
 }

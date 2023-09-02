@@ -1,3 +1,5 @@
+@use '../../utilities/variables';
+
 .home{
     display: flex;
 
@@ -25,7 +27,8 @@
 
             .listTitle{
                 font-weight: 500;
-                color: gray;
+                // color: gray;
+                color: variables.$text-color;
                 margin-bottom: 15px;
             }
         }

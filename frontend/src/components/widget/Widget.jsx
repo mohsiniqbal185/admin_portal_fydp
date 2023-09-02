@@ -67,7 +67,7 @@ function Widget({type}) {
   switch(type){
     case "user":
       data={
-        title: "USERS",
+        title: "Users",
         isMoney:false,
         link: "See all users",
         url:"/users",
@@ -102,17 +102,19 @@ function Widget({type}) {
 
   return (
     <div className='widget'>
-        <div className="left">
-            <span className="title">{data.title}</span>
-            <span className="counter">{data.isMoney && "$"} {data.count}</span>
-            <span className="link">
-              <Link to={data.url}>
-              {data.link}
-              </Link>
-              </span>
+        <div className="top">
+          <span className="title">{data.title}</span>
+          <span>{data.icon}</span>
         </div>
-        <div className="right">
-            {data.icon}
+        <div className="middle">
+          <span className="counter">{data.isMoney && "$"} {data.count}</span>
+        </div>
+        <div className="bottom">
+          <span className="link">
+            <Link to={data.url}>
+            {data.link}
+            </Link>
+          </span>
         </div>
     </div>
   )
